@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-//Vistas zeas
+//Vistas zea
 
 
 
