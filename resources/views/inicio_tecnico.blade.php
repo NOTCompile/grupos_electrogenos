@@ -16,7 +16,7 @@
                     @endif
                     <h1 class="text-center">Bienvenido al Sistema de Almacenamiento</h1>
                     <br>
-                    <a href="" class="btn btn-success">Continuar</a>
+                    
                 </div>
             </div>
         </div>

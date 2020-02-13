@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <a href="" class="btn btn-success">Continuar</a>
+                    
                 </div>
             </div>
         </div>

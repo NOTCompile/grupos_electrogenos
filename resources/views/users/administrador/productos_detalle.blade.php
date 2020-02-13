@@ -4,15 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         @include('menu_administrador')
-        <div class="col-md-9">            
+        <div class="col-md-9">
           <div class="container" >
                <div class="row">
-                    <p class="lead text-left" >Detalles de {{ $producto->nombre_producto }}</p>
+                    <p class="lead text-left" >Detalles de {{ $equipo_a->nombre }}</p>
                   </div>
                   
-                  <div class="row">
-                    <a class="btn btn-outline-primary" href="{{ route('Producto') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver</a>  
-                  </div>
                   <p></p>
                <div class="row border border-shadow-lg">
                  <div class="col-md-12">
@@ -35,31 +32,31 @@
                               <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('https://www.mundiario.com/media/mundiario/images/2018/09/04/2018090422114048856.jpg')  }}" alt="First slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto .'.'. $producto->imagen_producto)  }}" alt="Second slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto .'.'. $equipo_a->imagen_producto)  }}" alt="Second slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Third slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Third slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Fourth slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Fourth slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Fifth slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Fifth slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Sixth slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Sixth slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Seventh slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Seventh slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Eighth slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Eighth slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Ninth slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Ninth slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $producto->codigo_producto . '.png')  }}" alt="Tenth slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Tenth slide">
                          </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -79,7 +76,7 @@
                         <p class="lead text-left">Codigo:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $producto->codigo_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->codigo_producto }}</p>
                       </div>
                     </div>
                     <div class="row">
@@ -87,7 +84,7 @@
                         <p class="lead text-left">Empresa:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $producto->empresa_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->empresa_producto }}</p>
                       </div>
                     </div>
                     <div class="row">
@@ -95,7 +92,7 @@
                         <p class="lead text-left">Ubicacion:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $producto->ubicacion_producto }} años</p>
+                        <p class="lead text-left">{{ $equipo_a->ubicacion_producto }} años</p>
                       </div>
                     </div>
                     <div class="row">
@@ -103,7 +100,7 @@
                         <p class="lead text-left">Periocidad:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $producto->periocidad_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->user_id }}</p>
                       </div>
                     </div>
                     <div class="row">
@@ -111,7 +108,7 @@
                         <p class="lead text-left">Tipo de Producto:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $producto->tipo_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->tipo_producto }}</p>
                       </div>
                     </div>
                     <div class="row">
@@ -119,7 +116,7 @@
                         <p class="lead text-left">Celular</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $producto->celular_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->celular_producto }}</p>
                       </div>
                     </div>
                     <div class="row">
@@ -127,7 +124,7 @@
                            <p class="lead text-left">Hora de Inicio del Mantenimiento</p>
                          </div>
                          <div class="col-md-9 border border-dark">
-                           <p class="lead text-left">{{ $producto->hora_inicio_producto }}</p>
+                           <p class="lead text-left">{{ $equipo_a->hora_inicio_producto }}</p>
                          </div>
                     </div>
                     <div class="row">
@@ -135,7 +132,7 @@
                               <p class="lead text-left">Hora de Finalizacion del Mantenimeinto</p>
                          </div>
                          <div class="col-md-9 border border-dark">
-                              <p class="lead text-left">{{ $producto->hora_fin_producto }}</p>
+                              <p class="lead text-left">{{ $equipo_a->hora_fin_producto }}</p>
                          </div>
                     </div>
                   </div>

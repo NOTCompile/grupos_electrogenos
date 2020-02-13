@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         @include('menu_administrador')
-        <div class="col-md-9 border shadow p-4">            
-            <h1>NUEVO GRUPO ELECTROGENO</h1>
-        <form action="{{ route('producto_crear') }}" method="POST" enctype="multipart/form-data" id="upload">
+        <div class="col-md-9 border shadow">            
+          <h1>Editar Producto: {{ $equipo_a_e->nombre }}</h1>
+        <form action="{{ route('administrador_crear') }}" method="POST" enctype="multipart/form-data" id="upload">
           @csrf
           @error('codigo')
                <div class="alert alert-danger">
@@ -116,18 +116,14 @@
                    </div>
             </div>  
           <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <label for="">Hora de Inicio del Mantenimiento:</label>
                 <input type="time" name="hora_inicio" class="form-control" value="{{ old('hora_inicio') }}">
            </div>
-           <div class="form-group col-md-4">
+           <div class="form-group col-md-6">
                 <label for="">Hora de Finalizacion del Mantenimiento:</label>
                 <input type="time" name="hora_fin" class="form-control" value="{{ old('hora_fin') }}">
            </div>
-           <div class="form-group col-md-4">
-            <label for="">Numero de Usuario:</label>
-            <input type="number" name="user_id" class="form-control" >
-       </div>
           </div>
           {{--<div class="form-row">
                <div class="form-group col-md-12">
@@ -150,6 +146,7 @@
           </div>
                      
      </form>
+        </div>    
         </div>
     </div>
 </div>

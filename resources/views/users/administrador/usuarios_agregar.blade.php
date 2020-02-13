@@ -6,7 +6,7 @@
         @include('menu_administrador')
         <div class="col-md-9 border shadow">            
           <h3 class="display-4">Grupos Electrogenos</h3>
-               <a class="btn btn-outline-primary" href="{{ route('administrador_agregar') }}">Agregar Nuevo Grupo</a>
+               <a class="btn btn-outline-primary" href="{{ route('producto_agregar') }}">Agregar Nuevo Grupo</a>
           <p> </p>
           <div class="table-responsive">
           <table class="table table-bordered">
@@ -20,17 +20,17 @@
                </tr>
                </thead>
                <tbody>
-               @foreach ($equipos as $item)
+               @foreach ($item_equipo as $item)
                <tr class="table-info">
                     <td class="border border-dark text-left">{{ $item->codigo }}</td>
-                    <th class="border border-dark text-left"><a href="{{ route('administrador_detalle', $item) }}">
+                    <th class="border border-dark text-left"><a href="{{ route('producto_detalle', $item) }}">
                          {{ $item->nombre }}
                     </a></th>
                     <td class="border border-dark text-left">{{$item->empresa}}</td>
                     <td class="border border-dark text-left">{{$item->ubicacion}}</td>
                     <td class="border text-center border-dark">
-                    <div class="btn-group"> <a href="{{ route('administrador_editar', $item) }}" class="btn btn-outline-warning">EDITAR</a> 
-                         <form action="{{ route('administrador_eliminar', $item) }}" method="POST" class="d-inline">
+                    <div class="btn-group"> <a href="{{ route('producto_editar', $item) }}" class="btn btn-outline-warning">EDITAR</a> 
+                         <form action="{{ route('producto_eliminar', $item) }}" method="POST" class="d-inline">
                          @method('DELETE')
                          @csrf
                          <button  class="btn btn-outline-danger" type="submit">ELIMINAR</button> </div>
@@ -42,7 +42,7 @@
           </table>
           </div>
 
-          {{ $equipos->links() }}      
+          {{ $item_equipo->links() }}      
         </div>
     </div>
 </div>
