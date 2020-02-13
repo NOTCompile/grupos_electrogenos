@@ -36,16 +36,16 @@ class LoginController extends Controller
         $role_id = (auth()->user()->role_id);
         switch ($role_id) {
             case "1":
-                return ('/administrador');
+                return ('/users/administrador');
                 break;
             case "2":
-                return ('/tecnico');
+                return ('/users/tecnico');
                 break;
             case "3":
-                return ('/secretaria');
+                return ('/users/secretaria');
                 break;
             case "4":
-                return ('/cliente');
+                return ('/users/cliente');
                 break;
             default:
                 return ('/welcome');

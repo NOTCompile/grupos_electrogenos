@@ -25,25 +25,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function administrador(){
-
-        return view('administrador.inicio');
-    }
-
-    public function tecnico(){
-
-        return view('tecnico.inicio');
-    }
-
-    public function secretaria(){
-
-        return view('secretaria.inicio');
-    }
-
-    public function cliente(){
-
-        return view('cliente.inicio');
-    }
 }
 
