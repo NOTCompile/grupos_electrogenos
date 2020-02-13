@@ -23,23 +23,27 @@ class CreateEquiposTable extends Migration
             $table->string('periocidad', 20);
 
             $table->string('tipo_producto', 20);            
-            $table->string('marca_motor', 50)->nullable();;
-            $table->string('modelo_motor', 50)->nullable();;
-            $table->string('nserie_motor', 50)->nullable();;
-            $table->string('potencia_motor', 50)->nullable();;
-            $table->string('marca_generador', 50)->nullable();;
-            $table->string('modelo_generador', 50)->nullable();;
-            $table->string('nserie_generador', 50)->nullable();;
-            $table->string('potencia_generador', 50)->nullable();;
+            $table->string('marca_motor', 50)->nullable();
+            $table->string('modelo_motor', 50)->nullable();
+            $table->string('nserie_motor', 50)->nullable();
+            $table->string('potencia_motor', 50)->nullable();
+            $table->string('marca_generador', 50)->nullable();
+            $table->string('modelo_generador', 50)->nullable();
+            $table->string('nserie_generador', 50)->nullable();
+            $table->string('potencia_generador', 50)->nullable();
             $table->time('hora_inicio')->nullable();
             $table->time('hora_fin')->nullable();
 
-            
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
-        });
+        });     
+
+
     }
 
+   
     /**
      * Reverse the migrations.
      *

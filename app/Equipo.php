@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Equipo extends Model
 {
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
-    /*public function comentarios(){
-        return $this->belongsToMany(Comentario::class)
-    }*/
+    public function image(){
+        return $this->belongsToMany(Image::class);
+    }
+
+    public function mantenimiento(){
+        return $this->belongsToMany(Mantenimiento::class);
+    }
+
 }

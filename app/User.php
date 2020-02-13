@@ -14,9 +14,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    /*public function equipos(){
-        return $this->hasOne('App\Equipo');
-    }*/
+    public function equipos(){
+        return $this->belongsToMany(Equipo::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id', 'equipo_id',
     ];
 
     /**
