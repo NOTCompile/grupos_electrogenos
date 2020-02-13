@@ -6,8 +6,9 @@
         @include('menu_administrador')
         <div class="col-md-9 border shadow">            
           <h1>Editar Producto: {{ $equipo_a_e->nombre }}</h1>
-        <form action="{{ route('administrador_crear') }}" method="POST" enctype="multipart/form-data" id="upload">
+        <form action="{{ route('administrador_actualizar', $equipo_a_e->id) }}" method="POST" enctype="multipart/form-data" id="upload">
           @csrf
+          @method('PUT')
           @error('codigo')
                <div class="alert alert-danger">
                     El codigo del producto es obligatorio.

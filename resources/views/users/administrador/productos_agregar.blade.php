@@ -6,7 +6,7 @@
         @include('menu_administrador')
         <div class="col-md-9 border shadow p-4">            
             <h1>NUEVO GRUPO ELECTROGENO</h1>
-        <form action="{{ route('producto_crear') }}" method="POST" enctype="multipart/form-data" id="upload">
+        <form action="{{ route('administrador_crear') }}" method="POST" enctype="multipart/form-data" id="upload">
           @csrf
           @error('codigo')
                <div class="alert alert-danger">
