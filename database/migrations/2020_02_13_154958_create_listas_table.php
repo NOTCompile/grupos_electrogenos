@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMantenimientosTable extends Migration
+class CreateListasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateMantenimientosTable extends Migration
      */
     public function up()
     {
-        Schema::create('mantenimientos', function (Blueprint $table) {
+        Schema::create('listas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedBigInteger('equipo_id');
-            $table->foreign('equipo_id')->references('id')->on('equipos');
-
+            $table->unsignedBigInteger('mantenimiento_id');
+            $table->foreign('mantenimiento_id')->references('id')->on('mantenimientos');
+            
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +30,6 @@ class CreateMantenimientosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mantenimientos');
+        Schema::dropIfExists('listas');
     }
 }

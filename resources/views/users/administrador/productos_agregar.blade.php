@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         @include('menu_administrador')
-        <div class="col-md-9 border shadow">            
+        <div class="col-md-9 border shadow p-4">            
             <h1>NUEVO GRUPO ELECTROGENO</h1>
         <form action="{{-- route('producto.producto_crear') --}}" method="POST" enctype="multipart/form-data" id="upload">
           @csrf
@@ -56,15 +56,15 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Tipo de Producto: </label>
-                    <select name="tipo_producto" id="inputState" class="form-control">
-                         <option selected disabled value="">Selecciona...</option>
+                    <select name="tipo_producto" id="button" class="form-control">
+                         <option selected disabled value="" >Selecciona...</option>
                          <option text="Motor">Motor</option>
                          <option text="Generador">Generador</option>
                          <option text="Motor y Generador">Motor y Generador</option>
                     </select>
                </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" id="Motor">
             <div class="form-group col-md-12">
                 <label><h2>Motor</h2></label>
             </div>
@@ -84,10 +84,10 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="">Potencia:</label>
-                    <input type="text" name="potencia_generador" id="" class="form-control">
+                    <input type="text" name="potencia_motor" id="" class="form-control">
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row" id="Generador">
                 <div class="form-group col-md-12">
                     <label><h2>Generador</h2></label>
                 </div>
@@ -95,15 +95,15 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="">Marca:</label>
-                        <input type="text" name="marca_motor" id="" class="form-control">
+                        <input type="text" name="marca_generador" id="" class="form-control">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Modelo:</label>
-                        <input type="text" name="modelo_motor" id="" class="form-control">
+                        <input type="text" name="modelo_generador" id="" class="form-control">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">N° Serie:</label>
-                        <input type="text" name="nserie_motor" id="" class="form-control">
+                        <input type="text" name="nserie_generador" id="" class="form-control">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Potencia:</label>
@@ -118,25 +118,25 @@
           <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="">Hora de Inicio del Mantenimiento:</label>
-                <input type="time" name="hora_inicio_producto" class="form-control" value="{{ old('hora_inicio_producto') }}">
+                <input type="time" name="hora_inicio" class="form-control" value="{{ old('hora_inicio') }}">
            </div>
            <div class="form-group col-md-6">
                 <label for="">Hora de Finalizacion del Mantenimiento:</label>
-                <input type="time" name="hora_fin_producto" class="form-control" value="{{ old('hora_fin_producto') }}">
+                <input type="time" name="hora_fin" class="form-control" value="{{ old('hora_fin') }}">
            </div>
           </div>
           <div class="form-row">
                <div class="form-group col-md-12">
                     <label for="">Imagen:</label>
                     <div class="input-group control-group increment" >
-                         <input type="file" name="imagen_producto" class="form-control">
+                         <input type="file" name="imagen[]" class="form-control">
                               <div class="input-group-btn"> 
                                    <button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Agregar</button>
                               </div>
                     </div>
                     <div class="clone hide">
                          <div class="control-group input-group" style="margin-top:10px">
-                              <input type="file" name="imagen_producto" class="form-control">
+                              <input type="file" name="imagen[]" class="form-control">
                                    <div class="input-group-btn"> 
                                         <button class="btn btn-danger" type="button"><i class="fa fa-times"></i> Remove</button>
                                    </div>

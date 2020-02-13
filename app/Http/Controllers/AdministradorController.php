@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App;
 
-class PagesController extends Controller
+class AdministradorController extends Controller
 {
     public function administrador(){
         return view('inicio_administrador');
@@ -30,10 +30,11 @@ class PagesController extends Controller
     public function producto_crear(Request $request){
         $request->validate([
             'codigo' => 'required',
-            
+
         ]);
 
         $nuevo_equipo = new App\Equipo;
+        $nuevo_equipo::all();
     }
 
     public function producto_editar($id){
@@ -47,6 +48,5 @@ class PagesController extends Controller
     public function producto_eliminar($id){
 
     }
-
 
 }

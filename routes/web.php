@@ -10,18 +10,21 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/users/administrador', 'PagesController@administrador')->name('administrador');
-Route::get('/users/administrador/productos', 'PagesController@administrador_producto')->name('administrador_producto');
-Route::get('/users/administrador/productos/{id?}', 'PagesController@producto_detalle')->name('producto_detalle');
-Route::get('/users/administrador/productos_agregar', 'PagesController@producto_agregar')->name('producto_agregar');
+Route::get('/users/administrador', 'AdministradorController@administrador')->name('administrador');
+Route::get('/users/administrador/productos', 'AdministradorController@administrador_producto')->name('administrador_producto');
+Route::get('/users/administrador/productos/{id?}', 'AdministradorController@producto_detalle')->name('producto_detalle');
+Route::get('/users/administrador/productos_agregar', 'AdministradorController@producto_agregar')->name('producto_agregar');
+Route::post('/users/administrador/productos_crear', 'AdministradorController@producto_agregar')->name('producto_agregar');
 
 
 
-Route::get('/users/tecnico', 'PagesController@tecnico');
+Route::get('/users/tecnico', 'TecnicoController@tecnico');
 
-Route::get('/users/secretaria', 'PagesController@secretaria');
 
-Route::get('/users/cliente', 'PagesController@cliente');
+Route::get('/users/secretaria', 'SecretariaController@secretaria');
+
+
+Route::get('/users/cliente', 'ClienteController@cliente');
 
 
 
