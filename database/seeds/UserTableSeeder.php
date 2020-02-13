@@ -13,38 +13,45 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_administrador = Role::where('nombre', 'Administrador')->first();
-        $role_tecnico = Role::where('nombre', 'Tecnico')->first();
-        $role_secretaria = Role::where('nombre', 'Secretaria')->first();
-        $role_cliente = Role::where('nombre', 'Cliente')->first();
-
         $user = new User();
-        $user->name = "Admin";
-        $user->email = "admin@mail.com";
+        $user->name = "Administrador";
+        $user->email = "administrador@mail.com";
         $user->password = bcrypt('query');
+        $user->role_id = 1;
         $user->save();
-        $user->roles()->attach($role_administrador);
+        $user->roles()->attach([1]);
 
         $user = new User();
         $user->name = "Tecnico";
         $user->email = "tecnico@mail.com";
         $user->password = bcrypt('query');
+        $user->role_id = 2;
         $user->save();
-        $user->roles()->attach($role_tecnico);
+        $user->roles()->attach([2]);
 
         $user = new User();
         $user->name = "Secretaria";
         $user->email = "secretaria@mail.com";
         $user->password = bcrypt('query');
+        $user->role_id = 3;
         $user->save();
-        $user->roles()->attach($role_secretaria);
+        $user->roles()->attach([3]);
 
         $user = new User();
         $user->name = "Cliente";
         $user->email = "cliente@mail.com";
         $user->password = bcrypt('query');
+        $user->role_id = 4;
         $user->save();
-        $user->roles()->attach($role_cliente);
+        $user->roles()->attach([4]);
+
+        $user = new User();
+        $user->name = "prueba";
+        $user->email = "prueba@mail.com";
+        $user->password = bcrypt('query');
+        $user->role_id = 0;
+        $user->save();
+        $user->roles()->attach([0]);
 
 
 
