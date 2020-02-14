@@ -1,40 +1,43 @@
-@extends('layouts.app_administrador')
+@extends('layouts.app_cliente')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        @include('menu_administrador')
-        <div class="col-md-9 border shadow">            
-          <h3 class="display-4">Grupos Electrogenos</h3>
-               <a class="btn btn-outline-primary" href="{{ route('producto_agregar') }}">Agregar Nuevo Grupo</a>
+        @include('menu_cliente')
+        <div class="col-md-9 border shadow p-4">            
+          <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Usuarios</b></h1>
           <p> </p>
+          <div class="card border shadow">
+               <div class="card-header bg-dark text-white">
+                 N° Rol:
+               </div>
+               <div class="card-body">
+                 <p class="card-text mb-0"><b>Administrador:</b> 1</p>
+                 <p class="card-text mb-0"><b>Tecnico:</b> 2</p>
+                 <p class="card-text mb-0"><b>Secretaria:</b> 3</p>
+                 <p class="card-text mb-0"><b>Cliente:</b> 4</p>
+               </div>
+             </div>
+             <p></p>
           <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-sm table-bordered">
                <thead class="thead-dark">
                <tr>
-                    <th class="text-center border border-dark">Codigo</th>
-                    <th class="text-center border border-dark">Grupo Electrogeno</th>
-                    <th class="text-center border border-dark">Empresa</th>
-                    <th class="text-center border border-dark">Ubicación</th>
-                    <th class="text-center border border-dark">Acciones</th>
+                    <th class="text-center border border-dark">ID</th>
+                    <th class="text-center border border-dark">Nombre</th>
+                    <th class="text-center border border-dark">Email</th>
+                    <th class="text-center border border-dark">Rol</th>
+                    <th class="text-center border border-dark">Equipo ID</th>
                </tr>
                </thead>
                <tbody>
-               @foreach ($item_equipo as $item)
+               @foreach ($usuarios_c as $item)
                <tr class="table-info">
-                    <td class="border border-dark text-left">{{ $item->codigo }}</td>
-                    <th class="border border-dark text-left"><a href="{{ route('producto_detalle', $item) }}">
-                         {{ $item->nombre }}
-                    </a></th>
-                    <td class="border border-dark text-left">{{$item->empresa}}</td>
-                    <td class="border border-dark text-left">{{$item->ubicacion}}</td>
-                    <td class="border text-center border-dark">
-                    <div class="btn-group"> <a href="{{ route('producto_editar', $item) }}" class="btn btn-outline-warning">EDITAR</a> 
-                         <form action="{{ route('producto_eliminar', $item) }}" method="POST" class="d-inline">
-                         @method('DELETE')
-                         @csrf
-                         <button  class="btn btn-outline-danger" type="submit">ELIMINAR</button> </div>
-                    </td>
+                    <td class="border border-dark text-center">{{ $item->id }}</td>
+                    <td class="border border-dark text-left">{{ $item->name }}</td>
+                    <td class="border border-dark text-left">{{ $item->email }}</td>                    
+                    <td class="border border-dark text-center">{{$item->role_id}}</td>
+                    <td class="border border-dark text-center">{{$item->equipo_id}}</td>
                </tr>
                <tr></tr>
                @endforeach()   
@@ -42,7 +45,7 @@
           </table>
           </div>
 
-          {{ $item_equipo->links() }}      
+          {{ $usuarios_c->links() }}      
         </div>
     </div>
 </div>

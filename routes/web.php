@@ -12,6 +12,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users/administrador', 'AdministradorController@index_administrador')->name('index_administrador');
 
+/*Administrador*/
 Route::get('/users/administrador/productos', 'AdministradorController@producto_a')->name('producto_a');
 Route::get('/users/administrador/productos/{id?}', 'AdministradorController@producto_detalle_a')->name('producto_detalle_a');
 Route::get('/users/administrador/productos_agregar', 'AdministradorController@producto_agregar_a')->name('producto_agregar_a');
@@ -25,21 +26,32 @@ Route::get('/users/administrador/usuarios_editar/{id?}', 'AdministradorControlle
 Route::put('/users/administrador/usuarios_editar/{id?}', 'AdministradorController@usuario_actualizar_a')->name('usuario_actualizar_a');
 Route::delete('/users/administrador/usuarios_eliminar/{id?}', 'AdministradorController@usuario_eliminar_a')->name('usuario_eliminar_a');
 
-
-Route::get('/users/tecnico', 'TecnicoController@tecnico')->name('index_tecnico');
+/*Tecnico*/
+Route::get('/users/tecnico', 'TecnicoController@index_tecnico')->name('index_tecnico');
 Route::get('/users/tecnico/productos', 'TecnicoController@producto_t')->name('producto_t');
 Route::get('/users/tecnico/productos/{id?}', 'TecnicoController@producto_detalle_t')->name('producto_detalle_t');
 Route::get('/users/tecnico/productos_agregar', 'TecnicoController@producto_agregar_t')->name('producto_agregar_t');
 Route::post('/users/tecnico/productos_crear', 'TecnicoController@producto_crear_t')->name('producto_crear_t');
 Route::get('/users/tecnico/productos_editar/{id?}', 'TecnicoController@producto_editar_t')->name('producto_editar_t');
-Route::put('/users/tecnico/productos_editar/id?}', 'TecnicoController@producto_actualizar_t')->name('producto_actualizar_t');
+Route::put('/users/tecnico/productos_editar/{id?}', 'TecnicoController@producto_actualizar_t')->name('producto_actualizar_t');
 Route::delete('/users/tecnico/productos_eliminar/{id?}', 'TecnicoController@producto_eliminar_t')->name('producto_eliminar_t');
 
-Route::get('/users/tecnico/usuarios', 'TecnicoController@usuario_a')->name('usuario_t');
+Route::get('/users/tecnico/usuarios', 'TecnicoController@usuario_t')->name('usuario_t');
+Route::get('/users/administrador/usuarios_editar/{id?}', 'TecnicoController@usuario_editar_t')->name('usuario_editar_t');
+Route::put('/users/administrador/usuarios_editar/{id?}', 'TecnicoController@usuario_actualizar_t')->name('usuario_actualizar_t');
 
+/*Secretaria*/
+Route::get('/users/secretaria', 'SecretariaController@index_secretaria')->name('index_secretaria');
+Route::get('/users/secretaria/productos', 'SecretariaController@producto_s')->name('producto_s');
+Route::get('/users/secretaria/productos/{id?}', 'SecretariaController@producto_detalle_s')->name('producto_detalle_s');
 
+Route::get('/users/secretaria/usuarios', 'SecretariaController@usuario_s')->name('usuario_s');
 
-Route::get('/users/secretaria', 'SecretariaController@secretaria');
+/*Cliente*/
+Route::get('/users/cliente', 'ClienteController@index_cliente')->name('index_cliente');
+Route::get('/users/cliente/productos', 'ClienteController@producto_c')->name('producto_c');
+Route::get('/users/cliente/productos/{id?}', 'ClienteController@producto_detalle_c')->name('producto_detalle_c');
 
-
-Route::get('/users/cliente', 'ClienteController@cliente');
+Route::get('/users/cliente/usuarios', 'ClienteController@usuario_c')->name('usuario_c');
+Route::get('/users/cliente/usuarios_editar/{id?}', 'ClienteController@usuario_editar_c')->name('usuario_editar_c');
+Route::put('/users/cliente/usuarios_editar/{id?}', 'ClienteController@usuario_actualizar_c')->name('usuario_actualizar_c');

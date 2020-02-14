@@ -12,14 +12,12 @@ class AdministradorController extends Controller
     }
 
     public function producto_a(){
-        $equipos = App\Equipo::paginate(10);
-
-        return view('users.administrador.productos',compact('equipos'));
+        $equipos_a = App\Equipo::paginate(10);
+        return view('users.administrador.productos',compact('equipos_a'));
     }
 
     public function producto_detalle_a($id){
         $equipo_a = App\Equipo::findOrFail($id);
-
         return view('users.administrador.productos_detalle', compact('equipo_a'));
     }
 
@@ -99,7 +97,7 @@ class AdministradorController extends Controller
 
         $equipo_a_eliminar->delete();
 
-        return back()->with('mensaje', 'Eliminado');
+        return back();
     }
 
     ////

@@ -21,7 +21,7 @@
                </tr>
                </thead>
                <tbody>
-               @foreach ($equipos as $item)
+               @foreach ($equipos_a as $item)
                <tr class="table-info">
                     <td class="border border-dark text-center">{{ $item->id }}</td>                    
                     <th class="border border-dark text-center"><a href="{{ route('producto_detalle_a', $item) }}">
@@ -46,7 +46,7 @@
           </table>
           </div>
 
-          {{ $equipos->links() }}      
+          {{ $equipos_a->links() }}      
         </div>
     </div>
 </div>
