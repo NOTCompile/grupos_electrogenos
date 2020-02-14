@@ -21,8 +21,7 @@ class CreateEquiposTable extends Migration
             $table->string('ubicacion', 200);
             $table->integer('celular');
             $table->string('periocidad', 20);
-
-            $table->string('tipo_producto', 20);            
+          
             $table->string('marca_motor', 50)->nullable();
             $table->string('modelo_motor', 50)->nullable();
             $table->string('nserie_motor', 50)->nullable();

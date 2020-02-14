@@ -1,9 +1,9 @@
-@extends('layouts.app_secretaria')
+@extends('layouts.app_cliente')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        @include('menu_secretaria')
+        @include('menu_cliente')
         <div class="col-md-9">
           <div class="container border shadow p-4">
                <div class="row">

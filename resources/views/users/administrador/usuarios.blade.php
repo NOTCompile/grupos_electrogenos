@@ -6,7 +6,7 @@
         @include('menu_administrador')
         <div class="col-md-9 border shadow p-4">            
           <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Usuarios</b></h1>
-               <div class="text-center"><a class="btn btn-outline-primary" href="{{ route('usuario_agregar_a') }}"><i class="fa fa-plus-circle"></i> Nuevo Usuario</a></div>
+               <div class="text-center"><a class="btn btn-outline-primary" href="{{-- route('usuario_agregar_a') --}}"><i class="fa fa-plus-circle"></i> Nuevo Usuario</a></div>
           <p> </p>
           <div class="card border shadow">
                <div class="card-header bg-dark text-white">
@@ -33,7 +33,7 @@
                </tr>
                </thead>
                <tbody>
-               @foreach ($usuarios as $item)
+               @foreach ($usuarios_a as $item)
                <tr class="table-info">
                     <td class="border border-dark text-center">{{ $item->id }}</td>
                     <td class="border border-dark text-left">{{ $item->name }}</td>
@@ -42,7 +42,7 @@
                     <td class="border border-dark text-center">{{$item->equipo_id}}</td>
                     <td class="border text-center border-dark">
                          <div> 
-                              <a href="{{ route('usuario_editar_a', $item) }}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a> 
+                              <a href="{{-- route('usuario_editar_a', $item) --}}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a> 
                               <form action="{{ route('usuario_eliminar_a', $item) }}" method="POST" class="d-inline">
                               @method('DELETE')
                               @csrf
@@ -56,7 +56,7 @@
           </table>
           </div>
 
-          {{ $usuarios->links() }}      
+          {{ $usuarios_a->links() }}      
         </div>
     </div>
 </div>

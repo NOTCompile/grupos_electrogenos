@@ -103,9 +103,9 @@ class AdministradorController extends Controller
     ////
 
     public function usuario_a(){
-        $usuarios = App\User::paginate(10);
+        $usuarios_a = App\User::paginate(10);
 
-        return view('users.administrador.usuarios', compact('usuarios'));
+        return view('users.administrador.usuarios', compact('usuarios_a'));
     }
 
     public function usuario_editar_a($id){
