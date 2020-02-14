@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         @include('menu_administrador')
         <div class="col-md-9 border shadow">            
-          <h1>Editar Producto: {{ $equipo_a_e->nombre }}</h1>
-        <form action="{{ route('administrador_actualizar', $equipo_a_e->id) }}" method="POST" enctype="multipart/form-data" id="upload">
+            <h1 class="display-5" style="text-align:center"><b><u>Editar Producto:</u></b> {{ $equipo_a_e->nombre }}</h1>
+            <p> </p>
+        <form action="{{ route('producto_actualizar_a', $equipo_a_e->id) }}" method="POST" enctype="multipart/form-data" id="upload">
           @csrf
           @method('PUT')
           @error('codigo')
@@ -21,30 +22,30 @@
           <div class="form-row">
                <div class="form-group col-md-2">
                     <label for="">Codigo: </label>
-                    <input type="text" name="codigo" class="form-control" value="{{ old('codigo') }}">
+                    <input type="text" name="codigo" class="form-control" value="{{ $equipo_a_e->codigo }}">
                </div>
                
                <div class="form-group col-md-6">
                     <label for="">Nombre: </label>
-                    <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
+                    <input type="text" name="nombre" class="form-control" value="{{ $equipo_a_e->nombre}}">
                </div>
                <div class="form-group col-md-4">
                     <label for="">Empresa: </label>
-                    <input type="text" name="empresa" class="form-control" value="{{ old('empresa') }}" text="hola">
+                    <input type="text" name="empresa" class="form-control" value="{{ $equipo_a_e->empresa }}" text="hola">
                </div>
           </div>
 
           <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="">Ubicacion: </label>
-                    <input type="text" name="ubicacion" class="form-control" value="{{ old('ubicacion') }}">
+                    <input type="text" name="ubicacion" class="form-control" value="{{ $equipo_a_e->ubicacion }}">
                 </div>
           </div>
 
           <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="">Celular: </label>
-                    <input type="number" name="celular" class="form-control" value="{{ old('celular') }}">
+                    <input type="number" name="celular" class="form-control" value="{{ $equipo_a_e->celular }}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Periocidad</label>
@@ -73,19 +74,19 @@
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="">Marca:</label>
-                    <input type="text" name="marca_motor" id="" class="form-control">
+                    <input type="text" name="marca_motor" id="" class="form-control" value="{{ $equipo_a_e->marca_motor }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="">Modelo:</label>
-                    <input type="text" name="modelo_motor" id="" class="form-control">
+                    <input type="text" name="modelo_motor" id="" class="form-control" value="{{ $equipo_a_e->modelo_motor }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="">N° Serie:</label>
-                    <input type="text" name="nserie_motor" id="" class="form-control">
+                    <input type="text" name="nserie_motor" id="" class="form-control" value="{{ $equipo_a_e->nserie_motor }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="">Potencia:</label>
-                    <input type="text" name="potencia_motor" id="" class="form-control">
+                    <input type="text" name="potencia_motor" id="" class="form-control" value="{{ $equipo_a_e->potencia_motor }}">
                 </div>
             </div>
             <div class="form-row" id="Generador">
@@ -96,36 +97,40 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="">Marca:</label>
-                        <input type="text" name="marca_generador" id="" class="form-control">
+                        <input type="text" name="marca_generador" id="" class="form-control" value="{{ $equipo_a_e->marca_generador}}">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Modelo:</label>
-                        <input type="text" name="modelo_generador" id="" class="form-control">
+                        <input type="text" name="modelo_generador" id="" class="form-control" value="{{ $equipo_a_e->modelo_generador }}">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">N° Serie:</label>
-                        <input type="text" name="nserie_generador" id="" class="form-control">
+                        <input type="text" name="nserie_generador" id="" class="form-control" value="{{ $equipo_a_e->nserie_generador }}">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Potencia:</label>
-                        <input type="text" name="potencia_generador" id="" class="form-control">
+                        <input type="text" name="potencia_generador" id="" class="form-control" value="{{ $equipo_a_e->potencia_generador }}">
                     </div>
                 </div>
             <div class="form-row">
                    <div class="form-group col-md-12">
-                       <label><h4>Hora</h4></label>
+                       <label><h2>Hora</h2></label>
                    </div>
             </div>  
-          <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="">Hora de Inicio del Mantenimiento:</label>
-                <input type="time" name="hora_inicio" class="form-control" value="{{ old('hora_inicio') }}">
-           </div>
-           <div class="form-group col-md-6">
-                <label for="">Hora de Finalizacion del Mantenimiento:</label>
-                <input type="time" name="hora_fin" class="form-control" value="{{ old('hora_fin') }}">
-           </div>
+            <div class="form-row">
+               <div class="form-group col-md-4">
+                   <label for="">Hora de Inicio del Mantenimiento:</label>
+                   <input type="time" name="hora_inicio" class="form-control" value="{{ $equipo_a_e->hora_inicio }}">
+              </div>
+              <div class="form-group col-md-4">
+                   <label for="">Hora de Finalizacion del Mantenimiento:</label>
+                   <input type="time" name="hora_fin" class="form-control" value="{{ $equipo_a_e->hora_fin }}">
+              </div>
+              <div class="form-group col-md-4">
+               <label for="">Conexion con Usuario(Cliente) encargado:</label>
+               <input type="number" name="user_id" class="form-control" value="{{ $equipo_a_e->user_id }}">
           </div>
+             </div>
           {{--<div class="form-row">
                <div class="form-group col-md-12">
                     <label for="">Imagen:</label>
@@ -141,7 +146,7 @@
                
           <div class="form-row">
                <div class="form-group">
-                    <a class="btn btn-outline-primary" href="{{ route('administrador_producto') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver </a>
+                    <a class="btn btn-outline-primary" href="{{ route('producto_a') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver </a>
                     <button class="btn btn-outline-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Guardar</button>
                </div>
           </div>

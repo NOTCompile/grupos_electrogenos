@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         @include('menu_administrador')
         <div class="col-md-9 border shadow p-4">            
-            <h1>NUEVO GRUPO ELECTROGENO</h1>
-        <form action="{{ route('administrador_crear') }}" method="POST" enctype="multipart/form-data" id="upload">
+            <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Nuevo Grupo Electrogeno</b></h1>
+            <p> </p>
+        <form action="{{ route('producto_crear_a') }}" method="POST" enctype="multipart/form-data" id="upload">
           @csrf
           @error('codigo')
                <div class="alert alert-danger">
@@ -29,7 +30,7 @@
                </div>
                <div class="form-group col-md-4">
                     <label for="">Empresa: </label>
-                    <input type="text" name="empresa" class="form-control" value="{{ old('empresa') }}" text="hola">
+                    <input type="text" name="empresa" class="form-control" value="{{ old('empresa') }}">
                </div>
           </div>
 
@@ -144,7 +145,7 @@
                
           <div class="form-row">
                <div class="form-group">
-                    <a class="btn btn-outline-primary" href="{{ route('administrador_producto') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver </a>
+                    <a class="btn btn-outline-primary" href="{{ route('producto_a') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver </a>
                     <button class="btn btn-outline-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Guardar</button>
                </div>
           </div>

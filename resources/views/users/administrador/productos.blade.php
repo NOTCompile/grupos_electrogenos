@@ -4,36 +4,40 @@
 <div class="container">
     <div class="row justify-content-center">
         @include('menu_administrador')
-        <div class="col-md-9 border shadow">            
-          <h3 class="display-4">Grupos Electrogenos</h3>
-               <a class="btn btn-outline-primary" href="{{ route('administrador_agregar') }}">Agregar Nuevo Grupo</a>
+        <div class="col-md-9 border shadow p-4">            
+          <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Grupos Electrogenos</b></h1>
+               <div class="text-center"><a class="btn btn-outline-primary" href="{{ route('producto_agregar_a') }}"><i class="fa fa-plus-circle"></i> Nuevo Grupo</a></div>
           <p> </p>
           <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-sm table-bordered">
                <thead class="thead-dark">
                <tr>
+                    <th class="text-center border border-dark">ID</th>
                     <th class="text-center border border-dark">Codigo</th>
-                    <th class="text-center border border-dark">Grupo Electrogeno</th>
+                    <th class="text-center border border-dark">Nombre</th>
                     <th class="text-center border border-dark">Empresa</th>
-                    <th class="text-center border border-dark">Ubicación</th>
+                    <th class="text-center border border-dark">Usuario ID</th>
                     <th class="text-center border border-dark">Acciones</th>
                </tr>
                </thead>
                <tbody>
                @foreach ($equipos as $item)
                <tr class="table-info">
-                    <td class="border border-dark text-left">{{ $item->codigo }}</td>
-                    <th class="border border-dark text-left"><a href="{{ route('administrador_detalle', $item) }}">
-                         {{ $item->nombre }}
+                    <td class="border border-dark text-center">{{ $item->id }}</td>                    
+                    <th class="border border-dark text-center"><a href="{{ route('producto_detalle_a', $item) }}">
+                         {{ $item->codigo }}
                     </a></th>
+                    <td class="border border-dark text-left">{{ $item->nombre }}</td>
                     <td class="border border-dark text-left">{{$item->empresa}}</td>
-                    <td class="border border-dark text-left">{{$item->ubicacion}}</td>
+                    <td class="border border-dark text-center">{{$item->user_id}}</td>
                     <td class="border text-center border-dark">
-                    <div class="btn-group"> <a href="{{ route('administrador_editar', $item) }}" class="btn btn-outline-warning">EDITAR</a> 
-                         <form action="{{ route('administrador_eliminar', $item) }}" method="POST" class="d-inline">
+                    <div> 
+                         <a href="{{ route('producto_editar_a', $item) }}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a> 
+                         <form action="{{ route('producto_eliminar_a', $item) }}" method="POST" class="d-inline">
                          @method('DELETE')
                          @csrf
-                         <button  class="btn btn-outline-danger" type="submit">ELIMINAR</button> </div>
+                         <button class="btn btn-outline-danger" type="submit"><i class="fa fa-trash"></i></button>
+                    </div>
                     </td>
                </tr>
                <tr></tr>

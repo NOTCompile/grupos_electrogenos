@@ -7,34 +7,34 @@ use App;
 
 class AdministradorController extends Controller
 {
-    public function administrador(){
+    public function index_administrador(){
         return view('inicio_administrador');
     }
 
-    public function administrador_producto(){
-        $equipos = App\Equipo::paginate(5);
+    public function producto_a(){
+        $equipos = App\Equipo::paginate(10);
 
         return view('users.administrador.productos',compact('equipos'));
     }
 
-    public function administrador_detalle($id){
+    public function producto_detalle_a($id){
         $equipo_a = App\Equipo::findOrFail($id);
 
         return view('users.administrador.productos_detalle', compact('equipo_a'));
     }
 
-    public function administrador_agregar(){
+    public function producto_agregar_a(){
         return view('users.administrador.productos_agregar');
     }
 
-    public function administrador_crear(Request $request){
+    public function producto_crear_a(Request $request){
 
         $request->validate([
             'codigo' => 'required',
         ]);
 
         $nuevo_equipo_a = new App\Equipo($request->all());
-
+/*
         $nuevo_equipo_a->codigo = $request->codigo;        
         $nuevo_equipo_a->nombre = $request->nombre;
         $nuevo_equipo_a->empresa = $request->empresa;
@@ -52,21 +52,21 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->potencia_generador = $request->potencia_generador;
         $nuevo_equipo_a->hora_inicio = $request->hora_inicio;
         $nuevo_equipo_a->hora_fin = $request->hora_fin;
-        $nuevo_equipo_a->user_id = $request->user_id;
+        $nuevo_equipo_a->user_id = $request->user_id;*/
 
         $nuevo_equipo_a->save();
         
-        return redirect()->route('administrador');
+        return redirect()->route('index_administrador');
     }
 
-    public function administrador_editar($id){
+    public function producto_editar_a($id){
         $equipo_a_e = App\Equipo::findOrFail($id);
 
         return view('users.administrador.productos_editar', compact('equipo_a_e'));
 
     }
 
-    public function administrador_actualizar(Request $request, $id){
+    public function producto_actualizar_a(Request $request, $id){
         $equipo_a_actualizar = App\Equipo::findOrFail($id);
 
         $equipo_a_actualizar->codigo = $request->codigo;        
@@ -91,15 +91,50 @@ class AdministradorController extends Controller
 
         $equipo_a_actualizar->save();
 
-        return redirect()->route('administrador');
+        return redirect()->route('index_administrador');
     }
 
-    public function administrador_eliminar($id){
+    public function producto_eliminar_a($id){
         $equipo_a_eliminar = App\Equipo::findOrFail($id);
 
         $equipo_a_eliminar->delete();
 
         return back()->with('mensaje', 'Eliminado');
+    }
+
+    ////
+
+    public function usuario_a(){
+        $usuarios = App\User::paginate(10);
+
+        return view('users.administrador.usuarios', compact('usuarios'));
+    }
+
+    public function usuario_editar_a($id){
+        $usuario_a_e = App\User::findOrFail($id);
+
+        return view('users.administrador.usuarios_editar', compact('usuario_a_e'));
+    }
+
+    public function usuario_actualizar_a(Request $request, $id){
+        $usuario_a_actualizar = App\User::findOrFail($id);
+
+        $usuario_a_actualizar->name =$request->name;
+        $usuario_a_actualizar->email =$request->email;
+        $usuario_a_actualizar->role_id =$request->role_id;
+        $usuario_a_actualizar->equipo_id =$request->equipo_id;
+
+        $usuario_a_actualizar->save();
+
+        return redirect()->route('usuario_a');
+    }
+
+    public function usuario_eliminar_a($id){
+        $usuario_a_eliminar = App\User::findOrFail($id);
+
+        $usuario_a_eliminar->delete();
+
+        return redirect()->route('index_administrador');
     }
 
 }

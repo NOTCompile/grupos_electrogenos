@@ -5,15 +5,13 @@
     <div class="row justify-content-center">
         @include('menu_administrador')
         <div class="col-md-9">
-          <div class="container" >
+          <div class="container border shadow p-4">
                <div class="row">
-                    <p class="lead text-left" >Detalles de {{ $equipo_a->nombre }}</p>
+                <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Detalles de {{ $equipo_a->nombre }}</b></h1>
                   </div>
-                  
-                  <p></p>
+                  <p> </p>    
                <div class="row border border-shadow-lg">
-                 <div class="col-md-12">
-                   
+                 <div class="col-md-12">                   
                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -69,6 +67,7 @@
                     </a>
                   </div>
                </div>
+
                <div class="container">    
                     <p></p>           
                     <div class="row align-items-center">
@@ -76,7 +75,7 @@
                         <p class="lead text-left">Codigo:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $equipo_a->codigo_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->codigo }}</p>
                       </div>
                     </div>
                     <div class="row">
@@ -84,55 +83,55 @@
                         <p class="lead text-left">Empresa:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $equipo_a->empresa_producto }}</p>
+                        <p class="lead text-left">{{ $equipo_a->empresa }}</p>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-2 border border-dark">
+                      <div class="col-md-3 border border-dark">
                         <p class="lead text-left">Ubicacion:</p>
                       </div>
-                      <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $equipo_a->ubicacion_producto }} años</p>
+                      <div class="col-md-9 border border-dark">
+                        <p class="lead text-left">{{ $equipo_a->ubicacion }}</p>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-2 border border-dark">
+                      <div class="col-md-3 border border-dark">
                         <p class="lead text-left">Periocidad:</p>
                       </div>
-                      <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $equipo_a->user_id }}</p>
+                      <div class="col-md-9 border border-dark">
+                        <p class="lead text-left">{{ $equipo_a->periocidad }}</p>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-2 border border-dark">
+                      <div class="col-md-3 border border-dark">
                         <p class="lead text-left">Tipo de Producto:</p>
                       </div>
-                      <div class="col-md-10 border border-dark">
+                      <div class="col-md-9 border border-dark">
                         <p class="lead text-left">{{ $equipo_a->tipo_producto }}</p>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-2 border border-dark">
-                        <p class="lead text-left">Celular</p>
+                      <div class="col-md-3 border border-dark">
+                        <p class="lead text-left">Celular:</p>
                       </div>
-                      <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $equipo_a->celular_producto }}</p>
+                      <div class="col-md-9 border border-dark">
+                        <p class="lead text-left">{{ $equipo_a->celular }}</p>
                       </div>
                     </div>
                     <div class="row">
-                         <div class="col-md-3 border border-dark">
+                         <div class="col-md-4 border border-dark">
                            <p class="lead text-left">Hora de Inicio del Mantenimiento</p>
                          </div>
-                         <div class="col-md-9 border border-dark">
-                           <p class="lead text-left">{{ $equipo_a->hora_inicio_producto }}</p>
+                         <div class="col-md-8 border border-dark">
+                           <p class="lead text-left">{{ $equipo_a->hora_inicio }}</p>
                          </div>
                     </div>
                     <div class="row">
-                         <div class="col-md-3 border border-dark">
+                         <div class="col-md-4 border border-dark">
                               <p class="lead text-left">Hora de Finalizacion del Mantenimeinto</p>
                          </div>
-                         <div class="col-md-9 border border-dark">
-                              <p class="lead text-left">{{ $equipo_a->hora_fin_producto }}</p>
+                         <div class="col-md-8 border border-dark">
+                              <p class="lead text-left">{{ $equipo_a->hora_fin }}</p>
                          </div>
                     </div>
                   </div>

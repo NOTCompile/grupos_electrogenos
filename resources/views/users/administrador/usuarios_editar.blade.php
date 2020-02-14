@@ -5,44 +5,77 @@
     <div class="row justify-content-center">
         @include('menu_administrador')
         <div class="col-md-9 border shadow">            
-          <h3 class="display-4">Grupos Electrogenos</h3>
-               <a class="btn btn-outline-primary" href="{{ route('producto_agregar') }}">Agregar Nuevo Grupo</a>
+          <h1 class="display-5" style="text-align:center"><b><u>Editar Usuario:</u></b> {{ $usuario_a_e->name }}</h1>
           <p> </p>
-          <div class="table-responsive">
-          <table class="table table-bordered">
-               <thead class="thead-dark">
-               <tr>
-                    <th class="text-center border border-dark">Codigo</th>
-                    <th class="text-center border border-dark">Grupo Electrogeno</th>
-                    <th class="text-center border border-dark">Empresa</th>
-                    <th class="text-center border border-dark">Ubicación</th>
-                    <th class="text-center border border-dark">Acciones</th>
-               </tr>
-               </thead>
-               <tbody>
-               @foreach ($item_equipo as $item)
-               <tr class="table-info">
-                    <td class="border border-dark text-left">{{ $item->codigo }}</td>
-                    <th class="border border-dark text-left"><a href="{{ route('producto_detalle', $item) }}">
-                         {{ $item->nombre }}
-                    </a></th>
-                    <td class="border border-dark text-left">{{$item->empresa}}</td>
-                    <td class="border border-dark text-left">{{$item->ubicacion}}</td>
-                    <td class="border text-center border-dark">
-                    <div class="btn-group"> <a href="{{ route('producto_editar', $item) }}" class="btn btn-outline-warning">EDITAR</a> 
-                         <form action="{{ route('producto_eliminar', $item) }}" method="POST" class="d-inline">
-                         @method('DELETE')
-                         @csrf
-                         <button  class="btn btn-outline-danger" type="submit">ELIMINAR</button> </div>
-                    </td>
-               </tr>
-               <tr></tr>
-               @endforeach()   
-               </tbody>
-          </table>
+          <div class="row justify-content-center">
+               <div class="col-md-10">
+                   <div class="card border shadow">
+                              
+                       <div class="card-body">
+                           <form method="POST" action="{{ route('usuario_actualizar_a', $usuario_a_e->id) }}">
+                               @csrf
+                                   @method('PUT')
+                               <div class="form-group row">
+                                   <label for="name" class="col-md-4 col-form-label text-md-right">Nombre:</label>
+       
+                                   <div class="col-md-6">
+                                       <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $usuario_a_e->name }}" required autocomplete="name" autofocus>
+       
+                                       @error('name')
+                                           <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                           </span>
+                                       @enderror
+                                   </div>
+                               </div>
+       
+                               <div class="form-group row">
+                                   <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
+       
+                                   <div class="col-md-6">
+                                       <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $usuario_a_e->email }}" required autocomplete="email">
+       
+                                       @error('email')
+                                           <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                           </span>
+                                       @enderror
+                                   </div>
+                               </div>       
+                               <div class="form-group row">
+                                   <label for="inputState" class="col-md-4 col-form-label text-md-right">Tipo de Usuario:</label>
+                                   <div class="col-md-6">
+                                       <select id="inputState" class="form-control" name="role_id">
+                                           <option selected disabled value="">Seleccione...</option>
+                                           <option value="1">Administrador</option>
+                                           <option value="2">Tecnico</option>
+                                           <option value="3">Secretaria</option>
+                                           <option value="4">Cliente</option>
+                                       </select>
+                                   </div>
+                               </div>
+       
+                               <div class="form-group row">
+                                   <label for="inputState" class="col-md-4 col-form-label text-md-right">Grupo Electrogeno:</label>
+                                   <div class="col-md-6">
+                                        <input type="number" class="form-control" name="equipo_id" value="{{ $usuario_a_e->equipo_id }}">
+                                   </div>
+                               </div>
+       
+                               <div class="form-group row mb-0">
+                                   <div class="col-md-6 offset-md-4">
+                                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Guardar</button>
+                                   </div>
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <p></p>
           </div>
 
-          {{ $item_equipo->links() }}      
+            
         </div>
     </div>
 </div>
