@@ -30,10 +30,10 @@
                               <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('https://www.mundiario.com/media/mundiario/images/2018/09/04/2018090422114048856.jpg')  }}" alt="First slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto .'.'. $equipo_a->imagen_producto)  }}" alt="Second slide">
+                              <img class="d-block img-fluid w-100 bg-dark" style="width:200px;height:400px;" src="{{ url($equipo_a->image->url)  }}" alt="Second slide">
                          </div>
                          <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Third slide">
+                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url($equipo_a->image->url)  }}" alt="Third slide">
                          </div>
                          <div class="carousel-item">
                               <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Fourth slide">
@@ -75,7 +75,8 @@
                         <p class="lead text-left">Codigo:</p>
                       </div>
                       <div class="col-md-10 border border-dark">
-                        <p class="lead text-left">{{ $equipo_a->codigo }}</p>
+                        <p class="lead text-left">
+                        <a>{{ $equipo_a->image->nombre }}</p>
                       </div>
                     </div>
                     <div class="row">

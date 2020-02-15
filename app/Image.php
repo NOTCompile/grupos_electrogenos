@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $fillable = ['url'];
+    protected $fillable = ['nombre','url'];
     
     public function equipo(){
         return $this->belongsTo(Equipo::class);

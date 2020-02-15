@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\DB;
 use App;
 
 class AdministradorController extends Controller
@@ -22,24 +23,25 @@ class AdministradorController extends Controller
     }
 
     public function producto_agregar_a(){
-        return view('users.administrador.productos_agregar');
+        $users_list = DB::table('users')->select('id')->get();
+
+        return view('users.administrador.productos_agregar', compact('users_list'));
     }
 
     public function producto_crear_a(Request $request){
-
+        
         $request->validate([
             'codigo' => 'required',
-        ]);
+        ]);   
 
-        $nuevo_equipo_a = new App\Equipo($request->all());
-/*
+        $nuevo_equipo_a = new App\Equipo;        
+    
         $nuevo_equipo_a->codigo = $request->codigo;        
         $nuevo_equipo_a->nombre = $request->nombre;
         $nuevo_equipo_a->empresa = $request->empresa;
         $nuevo_equipo_a->ubicacion = $request->ubicacion;
         $nuevo_equipo_a->celular = $request->celular;
         $nuevo_equipo_a->periocidad = $request->periocidad;
-        $nuevo_equipo_a->tipo_producto = $request->tipo_producto;
         $nuevo_equipo_a->marca_motor = $request->marca_motor;
         $nuevo_equipo_a->modelo_motor = $request->modelo_motor;
         $nuevo_equipo_a->nserie_motor = $request->nserie_motor;
@@ -50,7 +52,8 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->potencia_generador = $request->potencia_generador;
         $nuevo_equipo_a->hora_inicio = $request->hora_inicio;
         $nuevo_equipo_a->hora_fin = $request->hora_fin;
-        $nuevo_equipo_a->user_id = $request->user_id;*/
+        $nuevo_equipo_a->user_id = $request->user_id;
+        $nuevo_equipo_a->image_id = $request->image_id;
 
         $nuevo_equipo_a->save();
         
@@ -129,10 +132,9 @@ class AdministradorController extends Controller
 
     public function usuario_eliminar_a($id){
         $usuario_a_eliminar = App\User::findOrFail($id);
-
         $usuario_a_eliminar->delete();
 
-        return redirect()->route('index_administrador');
+        return redirect()->route('usuario_a');
     }
 
 }

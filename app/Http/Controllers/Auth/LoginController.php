@@ -47,7 +47,6 @@ class LoginController extends Controller
             case "4":
                 return ('/users/cliente');
                 break;
-            
         }
     }
         

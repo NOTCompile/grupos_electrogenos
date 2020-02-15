@@ -6,7 +6,6 @@
         @include('menu_administrador')
         <div class="col-md-9 border shadow p-4">            
           <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Usuarios</b></h1>
-               <div class="text-center"><a class="btn btn-outline-primary" href="{{-- route('usuario_agregar_a') --}}"><i class="fa fa-plus-circle"></i> Nuevo Usuario</a></div>
           <p> </p>
           <div class="card border shadow">
                <div class="card-header bg-dark text-white">
@@ -28,7 +27,6 @@
                     <th class="text-center border border-dark">Nombre</th>
                     <th class="text-center border border-dark">Email</th>
                     <th class="text-center border border-dark">Rol</th>
-                    <th class="text-center border border-dark">Equipo ID</th>
                     <th class="text-center border border-dark">Acciones</th>
                </tr>
                </thead>
@@ -39,10 +37,10 @@
                     <td class="border border-dark text-left">{{ $item->name }}</td>
                     <td class="border border-dark text-left">{{ $item->email }}</td>                    
                     <td class="border border-dark text-center">{{$item->role_id}}</td>
-                    <td class="border border-dark text-center">{{$item->equipo_id}}</td>
                     <td class="border text-center border-dark">
                          <div> 
-                              <a href="{{-- route('usuario_editar_a', $item) --}}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a> 
+                              <a href="{{ route('usuario_editar_a', $item) }}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a>
+                              
                               <form action="{{ route('usuario_eliminar_a', $item) }}" method="POST" class="d-inline">
                               @method('DELETE')
                               @csrf

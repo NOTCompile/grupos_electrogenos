@@ -23,7 +23,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $role_id = (auth()->user()->role_id);
+        switch ($role_id) {
+            case "1":
+                return view('inicio_administrador');
+                break;
+            case "2":
+                return view('inicio_tecnico');
+                break;
+            case "3":
+                return view('inicio_secretaria');
+                break;
+            case "4":
+                return view('inicio_cliente');
+                break;
+        }
     }
 }
 
