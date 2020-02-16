@@ -34,10 +34,7 @@ class CreateEquiposTable extends Migration
             $table->time('hora_fin')->nullable();
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('image_id');
-            $table->foreign('image_id')->references('id')->on('images');
-            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });     

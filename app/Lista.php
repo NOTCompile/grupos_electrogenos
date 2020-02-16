@@ -10,10 +10,10 @@ class Lista extends Model
 
 
     public function mantenimiento(){
-        return $this->belongsToMany(Mantenimiento::class);
+        return $this->belongsTo(Mantenimiento::class);
     }
 
     public function item(){
-        return $this->belongsToMany(Item::class);
+        return $this->hasMany(Item::class);
     }
 }

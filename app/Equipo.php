@@ -12,15 +12,15 @@ class Equipo extends Model
     'hora_inicio','hora_fin','user_id'];
 
     public function user(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function image(){
-        return $this->belongsToMany(Image::class);
+        return $this->hasMany(Image::class);
     }
 
     public function mantenimiento(){
-        return $this->belongsToMany(Mantenimiento::class);
+        return $this->hasMany(Mantenimiento::class);
     }
 
 }

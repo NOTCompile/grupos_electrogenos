@@ -9,10 +9,10 @@ class Mantenimiento extends Model
     protected $fillable = ['nombre','equipo_id'];
     
     public function equipo(){
-        return $this->belongsToMany(Equipo::class);
+        return $this->belongsTo(Equipo::class);
     }
 
     public function lista(){
-        return $this->belongsToMany(Lista::class);
+        return $this->hasMany(Lista::class);
     }
 }

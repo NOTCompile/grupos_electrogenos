@@ -20,6 +20,9 @@ Route::get('/users/administrador/productos_editar/{id?}', 'AdministradorControll
 Route::put('/users/administrador/productos_editar/{id?}', 'AdministradorController@producto_actualizar_a')->name('producto_actualizar_a');
 Route::delete('/users/administrador/productos_eliminar/{id?}', 'AdministradorController@producto_eliminar_a')->name('producto_eliminar_a');
 
+
+
+
 Route::get('/users/administrador/usuarios', 'AdministradorController@usuario_a')->name('usuario_a');
 Route::get('/users/administrador/usuarios_editar/{id?}', 'AdministradorController@usuario_editar_a')->name('usuario_editar_a');
 Route::put('/users/administrador/usuarios_editar/{id?}', 'AdministradorController@usuario_actualizar_a')->name('usuario_actualizar_a');

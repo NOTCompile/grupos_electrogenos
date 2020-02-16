@@ -29,33 +29,12 @@
                          <div class="carousel-item active">
                               <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('https://www.mundiario.com/media/mundiario/images/2018/09/04/2018090422114048856.jpg')  }}" alt="First slide">
                          </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100 bg-dark" style="width:200px;height:400px;" src="{{ url($equipo_a->image->url)  }}" alt="Second slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url($equipo_a->image->url)  }}" alt="Third slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Fourth slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Fifth slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Sixth slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Seventh slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Eighth slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Ninth slide">
-                         </div>
-                         <div class="carousel-item">
-                              <img class="d-block img-fluid w-100" style="width:200px;height:400px;" src="{{ url('img/productos/' . $equipo_a->codigo_producto . '.png')  }}" alt="Tenth slide">
-                         </div>
+                         
+                         @foreach ($equipo_a->image as $item)
+                            <div class="carousel-item">
+                              <img class="d-block img-fluid w-100 bg-dark" style="width:200px;height:400px;" src="{{ url($item->url)  }}">
+                            </div>
+                         @endforeach                        
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,7 +55,7 @@
                       </div>
                       <div class="col-md-10 border border-dark">
                         <p class="lead text-left">
-                        <a>{{ $equipo_a->image->nombre }}</p>
+                        <a>{{ $equipo_a->nombre }}</p>
                       </div>
                     </div>
                     <div class="row">

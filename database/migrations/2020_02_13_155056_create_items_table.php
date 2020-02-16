@@ -21,8 +21,9 @@ class CreateItemsTable extends Migration
             $table->string('ejecucion')->nullable();
             $table->string('vacio')->nullable();
             $table->string('carga')->nullable();
+
             $table->unsignedBigInteger('lista_id');
-            $table->foreign('lista_id')->references('id')->on('listas');
+            $table->foreign('lista_id')->references('id')->on('listas')->onDelete('cascade');
             
             $table->timestamps();
         });

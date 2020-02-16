@@ -17,6 +17,8 @@ class CreateImagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('url');
+            $table->unsignedBigInteger('equipo_id');
+            $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade');
 
             $table->timestamps();
         });

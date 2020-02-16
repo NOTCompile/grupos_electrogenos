@@ -23,7 +23,7 @@ class AdministradorController extends Controller
     }
 
     public function producto_agregar_a(){
-        $users_list = DB::table('users')->select('id')->get();
+        $users_list = DB::table('users')->select('id')->where('role_id','=',4)->get();
 
         return view('users.administrador.productos_agregar', compact('users_list'));
     }
@@ -53,9 +53,14 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->hora_inicio = $request->hora_inicio;
         $nuevo_equipo_a->hora_fin = $request->hora_fin;
         $nuevo_equipo_a->user_id = $request->user_id;
-        $nuevo_equipo_a->image_id = $request->image_id;
 
         $nuevo_equipo_a->save();
+
+        $nueva_imagen_a = new App\Image;  
+        $nueva_imagen_a->nombre = $request->image_id;
+        $nueva_imagen_a->equipo_id = $nuevo_equipo_a->id;
+
+        $nueva_imagen_a->save();
         
         return redirect()->route('index_administrador');
     }

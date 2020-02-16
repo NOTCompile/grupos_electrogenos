@@ -17,7 +17,7 @@ class CreateListasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->unsignedBigInteger('mantenimiento_id');
-            $table->foreign('mantenimiento_id')->references('id')->on('mantenimientos');
+            $table->foreign('mantenimiento_id')->references('id')->on('mantenimientos')->onDelete('cascade');
             
             $table->timestamps();
         });

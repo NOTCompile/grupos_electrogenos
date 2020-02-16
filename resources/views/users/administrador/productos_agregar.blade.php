@@ -24,7 +24,7 @@
                 <select name="user_id" id="inputState" class="form-control">
                     <option selected disabled value="">Selecciona...</option>   
                     @foreach ($users_list as $item)                    
-                        <option value="">{{ $item->id }}</option>
+                        <option value="{{ $item->id }}">{{ $item->id }}</option>
                     @endforeach                    
                 </select>
                 
