@@ -23,8 +23,8 @@
                 <label for="">Usuario ID:</label>                
                 <select name="user_id" id="inputState" class="form-control">
                     <option selected disabled value="">Selecciona...</option>   
-                    @foreach ($users_list as $item)                    
-                        <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                    @foreach ($users_list as $item)               
+                        <option value="{{ $item->id }}">{{ $item->id }}</option>
                     @endforeach                    
                 </select>
                 
@@ -125,14 +125,7 @@
                     <input type="time" name="hora_fin" class="form-control" value="{{ old('hora_fin') }}">
                 </div>            
             </div>
-            <div class="form-row col-md-12">
-                <div class="btn-group btn-group-block" role="group">
-                    <a href="" type="button" class="btn btn-outline-warning text-dark">Checklist De Operatividad</a>
-                    <a href="" type="button" class="btn btn-outline-warning text-dark">Checklist De MTTO</a>
-                    <a href="" type="button" class="btn btn-outline-warning text-dark">Pruebas Electromecanicas</a>
-                </div>
-            </div>
-            <p></p>
+            
             <div class="form-row">
                 <div class="form-group col-md-12">
                 <label><h4 style="text-decoration:underline"class="display-10"><b>Imagenes:</b></h4></label>

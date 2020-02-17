@@ -25,7 +25,7 @@ class AdministradorController extends Controller
     public function producto_agregar_a(){
         $users_list = DB::table('users')->select('id')->where('role_id','=',4)->get();
 
-        return view('users.administrador.productos_agregar', compact('users_list'));
+        return view('users.administrador.productos_agregar', compact('users_list','users_list_name'));
     }
 
     public function producto_crear_a(Request $request){
