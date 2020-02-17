@@ -9,7 +9,8 @@
                <div class="row">
                 <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Detalles de {{ $equipo_a->nombre }}</b></h1>
                   </div>
-                  <p> </p>    
+                  <p> </p>
+                  
                <div class="row border border-shadow-lg">
                  <div class="col-md-12">                   
                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

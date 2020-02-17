@@ -53,7 +53,6 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->hora_inicio = $request->hora_inicio;
         $nuevo_equipo_a->hora_fin = $request->hora_fin;
         $nuevo_equipo_a->user_id = $request->user_id;
-
         $nuevo_equipo_a->save();
 
         $nueva_imagen_a = new App\Image;  
