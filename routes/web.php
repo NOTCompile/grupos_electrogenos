@@ -20,13 +20,17 @@ Route::get('/users/administrador/productos_editar/{id?}', 'AdministradorControll
 Route::put('/users/administrador/productos_editar/{id?}', 'AdministradorController@producto_actualizar_a')->name('producto_actualizar_a');
 Route::delete('/users/administrador/productos_eliminar/{id?}', 'AdministradorController@producto_eliminar_a')->name('producto_eliminar_a');
 
-
-
-
 Route::get('/users/administrador/usuarios', 'AdministradorController@usuario_a')->name('usuario_a');
 Route::get('/users/administrador/usuarios_editar/{id?}', 'AdministradorController@usuario_editar_a')->name('usuario_editar_a');
 Route::put('/users/administrador/usuarios_editar/{id?}', 'AdministradorController@usuario_actualizar_a')->name('usuario_actualizar_a');
 Route::delete('/users/administrador/usuarios_eliminar/{id?}', 'AdministradorController@usuario_eliminar_a')->name('usuario_eliminar_a');
+
+
+Route::get('/users/administrador/imagenes', 'ImageController@inicio_imagenes_a')->name('inicio_imagenes_a');
+Route::get('/users/administrador/imagenes_agregar', 'ImageController@imagenes_agregar_a')->name('imagenes_agregar_a');
+Route::post('/users/administrador/imagenes_crear', 'ImageController@imagenes_crear_a')->name('imagenes_crear_a');
+Route::delete('/users/administrador/imagenes_eliminar/{id}', 'ImageController@imagenes_eliminar_a')->name('imagenes_eliminar_a');
+
 
 
 /*Tecnico*/
@@ -35,13 +39,19 @@ Route::get('/users/tecnico/productos', 'TecnicoController@producto_t')->name('pr
 Route::get('/users/tecnico/productos/{id?}', 'TecnicoController@producto_detalle_t')->name('producto_detalle_t');
 Route::get('/users/tecnico/productos_agregar', 'TecnicoController@producto_agregar_t')->name('producto_agregar_t');
 Route::post('/users/tecnico/productos_crear', 'TecnicoController@producto_crear_t')->name('producto_crear_t');
-Route::get('/users/tecnico/productos_editar/{id?}', 'TecnicoController@producto_editar_t')->name('producto_editar_t');
-Route::put('/users/tecnico/productos_editar/{id?}', 'TecnicoController@producto_actualizar_t')->name('producto_actualizar_t');
 Route::delete('/users/tecnico/productos_eliminar/{id?}', 'TecnicoController@producto_eliminar_t')->name('producto_eliminar_t');
 
 Route::get('/users/tecnico/usuarios', 'TecnicoController@usuario_t')->name('usuario_t');
 Route::get('/users/tecnico/usuarios_editar/{id?}', 'TecnicoController@usuario_editar_t')->name('usuario_editar_t');
 Route::put('/users/tecnico/usuarios_editar/{id?}', 'TecnicoController@usuario_actualizar_t')->name('usuario_actualizar_t');
+
+Route::get('/users/administrador/imagenes', 'ImageController@inicio_imagenes_t')->name('inicio_imagenes_t');
+Route::get('/users/administrador/imagenes_agregar', 'ImageController@imagenes_agregar_t')->name('imagenes_agregar_t');
+Route::post('/users/administrador/imagenes_crear', 'ImageController@imagenes_crear_a')->name('imagenes_crear_t');
+Route::delete('/users/administrador/imagenes_eliminar/{id}', 'ImageController@imagenes_eliminar_t')->name('imagenes_eliminar_t');
+
+
+
 
 /*Secretaria*/
 Route::get('/users/secretaria', 'SecretariaController@index_secretaria')->name('index_secretaria');

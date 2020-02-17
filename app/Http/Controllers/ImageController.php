@@ -3,78 +3,80 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Imagen;
+Use Illuminate\Support\Facades\DB;
+use App;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ImageController extends Controller
 {
-    public function index()
-    {
-        $imagen=Imagen::orderBy('id')->get();        
-        return view('admin.fotos.index',compact('fotos'));
+    public function inicio_imagenes_a(){
+        $image_a = App\Image::paginate(10);
+        return view('users.administrador.imagen.imagen_lista', compact('image_a'));
     }
 
-    public function create()
-    {
-        return view('admin.fotos.create');
+    public function imagenes_agregar_a(){
+        $users_list = DB::table('equipos')->select('id')->get();
+        return view('users.administrador.imagen.imagen_agregar', compact('users_list'));
     }
- 
-    public function store(Request $request)
-    {
-        $foto    =   new fotos($request->all());
-            /////////// TRATAMIENTO IMAGEN
-            if ($request->hasFile('urlfoto')){
-                $urlfoto        = $request->file('urlfoto');            
-                $nombreurlfoto  = str_slug($request->nombre).time().'.'.$urlfoto->guessExtension();
-                $ruta=public_path('/img/fotos/'.$nombreurlfoto);            
-                Image::make($urlfoto->getRealPath())
-                    ->resize(800, null, function ($constraint) { $constraint->aspectRatio(); })
-                    ->save($ruta);
-                $foto->urlfoto      =   $nombreurlfoto; 
-            }            
-            ///////////// FIN IMAGEN
-        $foto->save();            
-        return redirect('/admin/fotos')->withSuccessMessage("Se ha creado correctamente");
-    }
+    
+    public function imagenes_crear_a(Request $request){
+        $nueva_imagen_a = new App\Image($request->all());
 
-  
-    public function edit($id)
-    {
-        $foto=fotos::findOrFail($id);
-        return view('admin.fotos.edit',compact('foto'));
-    }
+        $url_image = $request->file('url')->getClientOriginalName();
+        Image::make($request->file('url'))
+            ->save('img/image/'.$url_image);
 
-   
-    public function update(Request $request, $id)
-    {
-        $foto =fotos::findOrFail($id);
-        $urlfotoanterior      =   $foto->urlfoto;
-        $foto->fill($request->all());
-            /////////// TRATAMIENTO IMAGEN
-            if ($request->hasFile('urlfoto')){
-                $urlfoto        = $request->file('urlfoto');            
-                $nombreurlfoto  = str_slug($request->nombre).time().'.'.$urlfoto->guessExtension();
-                $ruta=public_path('/img/fotos/'.$nombreurlfoto);            
-                Image::make($urlfoto->getRealPath())
-                    ->resize(800, null, function ($constraint) { $constraint->aspectRatio(); })
-                    ->save($ruta);
-                $rutaAnterior = public_path("/img/fotos/".$urlfotoanterior);
-                if (file_exists($rutaAnterior))
-                    unlink (realpath($rutaAnterior));
-                $foto->urlfoto      =   $nombreurlfoto; 
-            }            
-            ///////////// FIN IMAGEN
-        $foto->save();            
-        return redirect()->back()->withSuccessMessage("Se ha actualizado correctamente");
-    }
+            $nueva_imagen_a->url = $url_image;
 
-    public function destroy($id)
-    {
-        $foto=fotos::findOrFail($id);
-        $rutaAnterior = public_path("/img/fotos/".$foto->urlfoto);
+        $nueva_imagen_a->save();
+        return redirect()->route('inicio_imagenes_a');
+    }
+    
+    public function imagenes_eliminar_a($id){
+        $image_a_eliminar = App\Image::findOrFail($id);
+
+        $rutaAnterior = public_path("/img/image/".$image_a_eliminar->url);
         if (file_exists($rutaAnterior))
             unlink (realpath($rutaAnterior));
-        $foto->delete();
-        return redirect()->route('admin.fotos.index');
+        $image_a_eliminar->delete();
+
+        return back();
     }
+
+    ////
+
+    public function inicio_imagenes_t(){
+        $image_t = App\Image::paginate(10);
+        return view('users.administrador.imagen.imagen_lista', compact('image_t'));
+    }
+
+    public function imagenes_agregar_t(){
+        $users_list = DB::table('equipos')->select('id')->get();
+        return view('users.administrador.imagen.imagen_agregar', compact('users_list'));
+    }
+    
+    public function imagenes_crear_t(Request $request){
+        $nueva_imagen_t = new App\Image($request->all());
+
+        $url_image = $request->file('url')->getClientOriginalName();
+        Image::make($request->file('url'))
+            ->save('img/image/'.$url_image);
+
+            $nueva_imagen_t->url = $url_image;
+
+        $nueva_imagen_t->save();
+        return redirect()->route('inicio_imagenes_a');
+    }
+    
+    public function imagenes_eliminar_t($id){
+        $image_t_eliminar = App\Image::findOrFail($id);
+
+        $rutaAnterior = public_path("/img/image/".$image_t_eliminar->url);
+        if (file_exists($rutaAnterior))
+            unlink (realpath($rutaAnterior));
+        $image_t_eliminar->delete();
+
+        return back();
+    }
+
 }

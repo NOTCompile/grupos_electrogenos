@@ -7,10 +7,9 @@
         <div class="col-md-9">
           <div class="container border shadow p-4">
                <div class="row">
-                <h1 class="display-5" style="text-decoration:underline; text-align:center"><b>Detalles de {{ $equipo_a->nombre }}</b></h1>
+                <h3 style="text-decoration:underline; text-align:center"><b>Detalles de {{ $equipo_a->nombre }}</b></h3>
                   </div>
-                  <p> </p>
-
+                  <p></p>
                <div class="row">
                  <div class="col-md-12">                   
                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -26,10 +25,13 @@
                       <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
                     </ol>
-                    <div class="carousel-inner">                         
-                         @foreach ($equipo_a->image as $item)
-                            <div class="carousel-item">
-                              <img class="d-block img-fluid w-100 bg-dark" style="width:200px;height:400px;" src="{{ url($item->url)  }}">
+                    <div class="carousel-inner">    
+                      <div class="carousel-item active border">
+                        <img class="d-block img-fluid w-100 bg-dark" style="width:200px;height:400px;" src="{{url('https://www.unimaq.com.pe/wp-content/uploads/2019/06/encapsulado-9-5_2.jpg?$cc-s$')}}" alt="">
+                      </div>                                   
+                         @foreach ($equipo_a->image as $item)                         
+                            <div class="carousel-item border">
+                              <img class="d-block img-fluid w-100 bg-dark" style="width:200px;height:400px;" src="{{url('/img/image/'.$item->url)}}" alt="">
                             </div>
                          @endforeach                        
                     </div>
@@ -47,146 +49,241 @@
                <div class="container">
                  <div class="row">
                   <div class="col-md-12 border bg-dark text-white">
-                    <p class="lead text-left"><h4>DATOS GENERALES</h4></p>
+                    <h3>DATOS GENERALES</h3>
                   </div>
                  </div>
                 <div class="row">
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Usuario ID</p>
+                    <h6 class="text-center">Usuario ID</h6>
                   </div>
                   <div class="col-md-6 border bg-danger text-white">
-                    <p class="lead text-lg-center">Nombre</p>
+                    <h6 class="text-center">Nombre</h6>
                   </div>
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Codigo</p>
+                    <h6 class="text-center">Codigo</h6>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->user_id }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->user_id }}</h6>
                   </div>
                   <div class="col-md-6 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->nombre }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->nombre }}</h6>
                   </div>
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->nombre }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->nombre }}</h6>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-4 border bg-danger text-white">
-                    <p class="lead text-lg-center">Empresa:</p>
+                    <h6 class="text-center">Empresa:</h6>
                   </div>
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Celular:</p>
+                    <h6 class="text-center">Celular:</h6>
                   </div>
                   <div class="col-md-5 border bg-danger text-white">
-                    <p class="lead text-lg-center">Periodicidad:</p>
+                    <h6 class="text-center">Periodicidad:</h6>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-4 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->empresa }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->empresa }}</h6>
                   </div>
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->celular }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->celular }}</h6>
                   </div>
                   <div class="col-md-5 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->periocidad }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->periocidad }}</h6>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12 border bg-danger text-white">
-                    <p class="lead text-lg-center">Ubicacion</p>
+                    <h6 class="text-center">Ubicacion</h6>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12 border">
-                    <p class="lead text-lg-left">{{ $equipo_a->ubicacion }}</p>
+                    <h6 class="lead text-left">{{ $equipo_a->ubicacion }}</h6>
                   </div>
                 </div>
                 <P> </P>
+
                 <div class="row">
                   <div class="col-md-12 border bg-dark text-white">
-                    <p class="lead text-left"><h4>DATOS DEL EQUIPO</h4></p>
+                    <h4>DATOS DEL EQUIPO</h4>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6 border bg-warning text-white">
-                    <p class="lead text-lg-center"><strong>MOTOR</strong></p>
+                  <div class="col-md-6 border bg-success text-white">
+                    <h5 class="text-center">MOTOR</h5>
                   </div>
-                  <div class="col-md-6 border bg-warning text-white">
-                    <p class="lead text-lg-center"><strong>GENERADOR</strong></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Marca</p>
-                  </div>
-                  <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Modelo</p>
-                  </div>
-                  <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Marca</p>
-                  </div>
-                  <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Modelo</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->marca_motor }}</p>
-                  </div>
-                  <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->modelo_motor }}</p>
-                  </div>
-                  <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->marca_generador }}</p>
-                  </div>
-                  <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->modelo_generador }}</p>
+                  <div class="col-md-6 border bg-success text-white">
+                    <h5 class="text-center">GENERADOR</h5>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">N° de Serie</p>
+                    <h6 class="text-center">Marca</h6>
                   </div>
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Potencia</p>
+                    <h6 class="text-center">Modelo</h6>
                   </div>
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">N° de Serie</p>
+                    <h6 class="text-center">Marca</h6>
                   </div>
                   <div class="col-md-3 border bg-danger text-white">
-                    <p class="lead text-lg-center">Potencia</p>
+                    <h6 class="text-center">Modelo</h6>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->nserie_motor }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->marca_motor }}</h6>
                   </div>
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->potencia_motor }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->modelo_motor }}</h6>
                   </div>
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->nserie_generador }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->marca_generador }}</h6>
                   </div>
                   <div class="col-md-3 border">
-                    <p class="lead text-lg-center">{{ $equipo_a->potencia_generador }}</p>
+                    <h6 class="lead text-center">{{ $equipo_a->modelo_generador }}</h6>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 border bg-danger text-white">
+                    <h6 class="text-center">N° de Serie</h6>
+                  </div>
+                  <div class="col-md-3 border bg-danger text-white">
+                    <h6 class="text-center">Potencia</h6>
+                  </div>
+                  <div class="col-md-3 border bg-danger text-white">
+                    <h6 class=" text-center">N° de Serie</h6>
+                  </div>
+                  <div class="col-md-3 border bg-danger text-white">
+                    <h6 class="text-center">Potencia</h6>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 border">
+                    <h6 class="lead text-center">{{ $equipo_a->nserie_motor }}</h6>
+                  </div>
+                  <div class="col-md-3 border">
+                    <h6 class="lead text-center">{{ $equipo_a->potencia_motor }}</h6>
+                  </div>
+                  <div class="col-md-3 border">
+                    <h6 class="lead text-center">{{ $equipo_a->nserie_generador }}</h6>
+                  </div>
+                  <div class="col-md-3 border">
+                    <h6 class="lead text-center">{{ $equipo_a->potencia_generador }}</h6>
                   </div>
                 </div>
                 <P></P>
-               </div>
-                  <div class="form-row col-md-12">
-                    <div class="btn-group btn-group-block" role="group">
-                        <button href="" type="button" class="btn btn-primary text-white">Checklist De Operatividad</button>
-                        <button href="" type="button" class="btn btn-primary text-white">Checklist De MTTO</button>
-                        <button href="" type="button" class="btn btn-primary text-white">Pruebas Electromecanicas</button>
-                    </div>
+
+                <div class="row">
+                  <div class="col-md-12 border bg-dark text-white">
+                    <h4>MANTENIMIENTO</h4>
                   </div>
-                  <p></p>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 border bg-warning text-dark">
+                    <h5>Lista de Verficacion de Operatividad</h5>
                   </div>
-                
-     
+                </div>
+                <div class="row">
+                  <div class="col-md-1 border bg-danger text-white">
+                    <h6 class="text-center">N°</h6>
+                  </div>
+                  <div class="col-md-6 border bg-danger text-white">
+                    <h6 class="text-center">Componante</h6>
+                  </div>
+                  <div class="col-md-2 border bg-danger text-white">
+                    <h6 class="text-center">Estado</h6>
+                  </div>
+                  <div class="col-md-3 border bg-danger text-white">
+                    <h6 class="text-center">Comentario</h6>
+                  </div>
+                </div>
+                {{--Aqui aplicar el @Foreach--}}
+                <div class="row">
+                  <div class="col-md-1 border">
+                    <h6 class="lead text-center">1.0</h6>
+                  </div>
+                  <div class="col-md-6 border">
+                    <h6 class="lead text-center">Componante</h6>
+                  </div>
+                  <div class="col-md-2 border">
+                    <h6 class="lead text-center">Estado</h6>
+                  </div>
+                  <div class="col-md-3 border">
+                    <h6 class="lead text-center">Comentario</h6>
+                  </div>
+                </div>
+               {{--Hasta aqui aplicar el @Foreach--}}
+
+               <div class="row">
+                <div class="col-md-12 border bg-warning text-dark">
+                  <h5>Lista de Verficacion de MTTO</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 border bg-danger text-white">
+                  <h6 class="text-center">N°</h6>
+                </div>
+                <div class="col-md-9 border bg-danger text-white">
+                  <h6 class="text-center">Actividad</h6>
+                </div>
+                <div class="col-md-2 border bg-danger text-white">
+                  <h6 class="text-center">Ejecucion</h6>
+                </div>                
+              </div>
+              {{--Aqui aplicar el @Foreach--}}
+              <div class="row">
+                <div class="col-md-1 border">
+                  <h6 class="lead text-center">1.0</h6>
+                </div>
+                <div class="col-md-9 border">
+                  <h6 class="lead text-left">Componante</h6>
+                </div>
+                <div class="col-md-2 border">
+                  <h6 class="lead text-center">Si / No</h6>
+                </div>
+              </div>
+              {{--Hasta aqui aplicar el @Foreach--}}
+              <div class="row">
+                <div class="col-md-12 border bg-warning text-dark">
+                  <h5 class="text-left">Pruebas Electromecanicas de Operacion</h5>
+                </div>
+              </div>
+              {{--Aqui aplicar el @Foreach--}}
+              <div class="row">
+                <div class="col-md-12 border bg-success text-white">
+                  <h5 class="lead text-left"><strong>Lista</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 border bg-danger text-white">
+                  <h6 class="text-center">Nombre</h6>
+                </div>
+                <div class="col-md-2 border bg-danger text-white">
+                  <h6 class="text-center">En Vacio (5 min)</h6>
+                </div>
+                <div class="col-md-2 border bg-danger text-white">
+                  <h6 class="text-center">Con Carga (20 min)</h6>
+                </div>                
+              </div>              
+              <div class="row">
+                <div class="col-md-8 border">
+                  <h6 class="lead text-center">1.0</h6>
+                </div>
+                <div class="col-md-2 border">
+                  <h6 class="lead text-left">Componante</h6>
+                </div>
+                <div class="col-md-2 border">
+                  <h6 class="lead text-center">Si / No</h6>
+                </div>
+              </div>
+              {{--Hasta aqui aplicar el @Foreach--}}
+                <p></p> 
           </div>
         </div>
     </div>

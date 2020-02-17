@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManagerStatic as Image;
 use App;
 
 class AdministradorController extends Controller
@@ -23,9 +24,9 @@ class AdministradorController extends Controller
     }
 
     public function producto_agregar_a(){
-        $users_list = DB::table('users')->select('id')->where('role_id','=',4)->get();
+        $users_list = DB::table('users')->select('id','name')->where('role_id','=',4)->get();
 
-        return view('users.administrador.productos_agregar', compact('users_list','users_list_name'));
+        return view('users.administrador.productos_agregar', compact('users_list'));
     }
 
     public function producto_crear_a(Request $request){
@@ -41,6 +42,7 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->empresa = $request->empresa;
         $nuevo_equipo_a->ubicacion = $request->ubicacion;
         $nuevo_equipo_a->celular = $request->celular;
+        $nuevo_equipo_a->fecha = $request->fecha;
         $nuevo_equipo_a->periocidad = $request->periocidad;
         $nuevo_equipo_a->marca_motor = $request->marca_motor;
         $nuevo_equipo_a->modelo_motor = $request->modelo_motor;
@@ -55,10 +57,15 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->user_id = $request->user_id;
         $nuevo_equipo_a->save();
 
-        $nueva_imagen_a = new App\Image;  
-        $nueva_imagen_a->nombre = $request->image_id;
-        $nueva_imagen_a->equipo_id = $nuevo_equipo_a->id;
 
+        $nueva_imagen_a = new App\Image;        
+        $nombre_image = $request->file('image_id')->getClientOriginalName();
+        Image::make($request->file('image_id'))
+            ->save('img/image/'.$nombre_image);
+
+        $nueva_imagen_a->url = $nombre_image;
+        $nueva_imagen_a->equipo_id = $nuevo_equipo_a->id;
+            
         $nueva_imagen_a->save();
         
         return redirect()->route('index_administrador');
@@ -66,8 +73,9 @@ class AdministradorController extends Controller
 
     public function producto_editar_a($id){
         $equipo_a_e = App\Equipo::findOrFail($id);
+        $users_list = DB::table('users')->select('id')->where('role_id','=',4)->get();
 
-        return view('users.administrador.productos_editar', compact('equipo_a_e'));
+        return view('users.administrador.productos_editar', compact('equipo_a_e','users_list'));
 
     }
 
@@ -80,7 +88,6 @@ class AdministradorController extends Controller
         $equipo_a_actualizar->ubicacion = $request->ubicacion;
         $equipo_a_actualizar->celular = $request->celular;
         $equipo_a_actualizar->periocidad = $request->periocidad;
-        $equipo_a_actualizar->tipo_producto = $request->tipo_producto;
         $equipo_a_actualizar->marca_motor = $request->marca_motor;
         $equipo_a_actualizar->modelo_motor = $request->modelo_motor;
         $equipo_a_actualizar->nserie_motor = $request->nserie_motor;

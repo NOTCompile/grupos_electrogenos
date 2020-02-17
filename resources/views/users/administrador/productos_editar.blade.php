@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         @include('menu_administrador')
-        <div class="col-md-9 border shadow">            
+        <div class="col-md-9 border shadow p-4">            
             <h1 class="display-5" style="text-align:center"><b><u>Editar Producto:</u></b> {{ $equipo_a_e->nombre }}</h1>
             <p> </p>
         <form action="{{ route('producto_actualizar_a', $equipo_a_e->id) }}" method="POST" enctype="multipart/form-data" id="upload">
@@ -19,130 +19,143 @@
                </div>
           @enderror
                     
-          <div class="form-row">
-               <div class="form-group col-md-2">
-                    <label for="">Codigo: </label>
-                    <input type="text" name="codigo" class="form-control" value="{{ $equipo_a_e->codigo }}">
-               </div>
-               
-               <div class="form-group col-md-6">
-                    <label for="">Nombre: </label>
-                    <input type="text" name="nombre" class="form-control" value="{{ $equipo_a_e->nombre}}">
-               </div>
-               <div class="form-group col-md-4">
-                    <label for="">Empresa: </label>
-                    <input type="text" name="empresa" class="form-control" value="{{ $equipo_a_e->empresa }}" text="hola">
-               </div>
-          </div>
-
-          <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="">Ubicacion: </label>
+          <div class="form-row bg-warning">
+            <div class="form-group col-md-2 text-lg-center">
+            <label>Usuario ID</label>                
+            <select name="user_id" id="inputState" class="form-control">
+                <option selected disabled value="">Escoga...</option>   
+                @foreach ($users_list as $item)               
+                    <option value="{{ $item->id }}">{{ $item->id }}</option>
+                @endforeach                    
+            </select>                
+            </div>
+            <div class="form-group col-md-2 text-lg-center">
+                <label>Codigo</label>
+                <input type="text" name="codigo" class="form-control" value="{{ $equipo_a_e->codigo }}">
+            </div>               
+            <div class="form-group col-md-8 text-lg-center">
+                <label>Nombre</label>
+                <input type="text" name="nombre" class="form-control" value="{{ $equipo_a_e->nombre }}">
+            </div>
+        </div>
+        <div class="form-row bg-warning">
+                <div class="form-group col-md-7 text-lg-center">
+                    <label>Empresa</label>
+                    <input type="text" name="empresa" class="form-control" value="{{ $equipo_a_e->empresa }}">
+                </div>
+                <div class="form-group col-md-2 text-lg-center">
+                    <label>Periocidad</label>
+                    <select name="periocidad" id="inputState" class="form-control">
+                        <option selected disabled value="">Escoga...</option>
+                        <option text="Anual">Anual</option>
+                        <option text="Bimestral">Bimestral</option>
+                        <option text="Trimestral">Trimestral</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 text-lg-center  ">
+                    <label>Celular</label>
+                    <input type="number" name="celular" class="form-control" value="{{ $equipo_a_e->celular  }}">
+                </div>
+                
+        </div>
+        <div class="form-row bg-warning">
+                <div class="form-group col-md-12 text-lg-center">
+                    <label>Ubicacion</label>
                     <input type="text" name="ubicacion" class="form-control" value="{{ $equipo_a_e->ubicacion }}">
                 </div>
-          </div>
-
-          <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="">Celular: </label>
-                    <input type="number" name="celular" class="form-control" value="{{ $equipo_a_e->celular }}">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputState">Periocidad</label>
-                    <select name="periocidad" id="inputState" class="form-control">
-                         <option selected disabled value="">Selecciona...</option>
-                         <option text="Anual">Anual</option>
-                         <option text="Bimestral">Bimestral</option>
-                         <option text="Trimestral">Trimestral</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputState">Tipo de Producto: </label>
-                    <select name="tipo_producto" id="button" class="form-control">
-                         <option selected disabled value="" >Selecciona...</option>
-                         <option text="Motor">Motor</option>
-                         <option text="Generador">Generador</option>
-                         <option text="Motor y Generador">Motor y Generador</option>
-                    </select>
-               </div>
-          </div>
-          <div class="form-row" id="Motor">
-            <div class="form-group col-md-12">
-                <label><h2>Motor</h2></label>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 bg-danger text-white">
+                <h3>DATOS DE EQUIPO</h3>
             </div>
-          </div>      
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="">Marca:</label>
-                    <input type="text" name="marca_motor" id="" class="form-control" value="{{ $equipo_a_e->marca_motor }}">
+        </div>
+        <div class="form-row bg">
+            <div class="col-md-6 bg-dark text-white">
+                <h5 class="text-lg-center">Motor</h5>
+            </div><div class="col-md-6 bg-dark text-white">
+                <h5 class="text-lg-center">Generador</h5>
+            </div>
+        </div>   
+        <div class="form-row bg-warning">
+            <div class="form-group col-md-3 text-lg-center">
+                <label>Marca</label>
+                <input type="text" name="marca_motor" id="" value="{{  $equipo_a_e->marca_motor  }}" class="form-control">
+            </div>
+            <div class="form-group col-md-3 text-lg-center">
+                <label>Modelo</label>
+                <input type="text" name="modelo_motor" id="" value="{{  $equipo_a_e->modelo_motor  }}" class="form-control">
+            </div>
+            <div class="form-group col-md-3 text-lg-center">
+                <label>Marca</label>
+                <input type="text" name="marca_generador" id="" value="{{  $equipo_a_e->marca_generador  }}" class="form-control">
+            </div>
+            <div class="form-group col-md-3 text-lg-center">
+                <label>Modelo</label>
+                <input type="text" name="modelo_generador" id="" value="{{  $equipo_a_e->modelo_generador  }}" class="form-control">
+            </div>
+        </div>   
+            <div class="form-row bg-warning">
+                <div class="form-group col-md-3 text-lg-center">
+                    <label>N° Serie</label>
+                    <input type="text" name="nserie_motor" id="" value="{{  $equipo_a_e->nserie_motor  }}" class="form-control">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="">Modelo:</label>
-                    <input type="text" name="modelo_motor" id="" class="form-control" value="{{ $equipo_a_e->modelo_motor }}">
+                <div class="form-group col-md-3 text-lg-center">
+                    <label>Potencia</label>
+                    <input type="text" name="potencia_motor" id="" value="{{  $equipo_a_e->potencia_motor  }}" class="form-control">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="">N° Serie:</label>
-                    <input type="text" name="nserie_motor" id="" class="form-control" value="{{ $equipo_a_e->nserie_motor }}">
+                <div class="form-group col-md-3 text-lg-center">
+                    <label>N° Serie</label>
+                    <input type="text" name="nserie_generador" id="" value="{{  $equipo_a_e->nserie_generador  }}" class="form-control">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="">Potencia:</label>
-                    <input type="text" name="potencia_motor" id="" class="form-control" value="{{ $equipo_a_e->potencia_motor }}">
+                <div class="form-group col-md-3 text-lg-center">
+                    <label>Potencia</label>
+                    <input type="text" name="potencia_generador" id="" value="{{  $equipo_a_e->potencia_generador  }}" class="form-control">
                 </div>
             </div>
-            <div class="form-row" id="Generador">
-                <div class="form-group col-md-12">
-                    <label><h2>Generador</h2></label>
-                </div>
-              </div>      
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="">Marca:</label>
-                        <input type="text" name="marca_generador" id="" class="form-control" value="{{ $equipo_a_e->marca_generador}}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="">Modelo:</label>
-                        <input type="text" name="modelo_generador" id="" class="form-control" value="{{ $equipo_a_e->modelo_generador }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="">N° Serie:</label>
-                        <input type="text" name="nserie_generador" id="" class="form-control" value="{{ $equipo_a_e->nserie_generador }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="">Potencia:</label>
-                        <input type="text" name="potencia_generador" id="" class="form-control" value="{{ $equipo_a_e->potencia_generador }}">
-                    </div>
-                </div>
             <div class="form-row">
-                   <div class="form-group col-md-12">
-                       <label><h2>Hora</h2></label>
-                   </div>
-            </div>  
+                <div class="col-md-12 bg-danger text-white">
+                    <h3>MANTENIMIENTO</h3>
+                </div>
+            </div>
+            <div class="form-row bg-warning text-lg-center">
+                <div class="form-group col-md-4">
+                    <label>Fecha</label>
+                    <input type="date" name="fecha" class="form-control" value="{{  $equipo_a_e->fecha  }}">
+                </div>
+                <div class="form-group col-md-4 text-lg-center">
+                    <label>Hora de Inicio</label>
+                    <input type="time" name="hora_inicio" class="form-control" value="{{  $equipo_a_e->hora_inicio  }}">
+                </div>
+                <div class="form-group col-md-4 text-lg-center">
+                    <label>Hora de Finalizacion</label>
+                    <input type="time" name="hora_fin" class="form-control" value="{{  $equipo_a_e->hora_fin  }}">
+                </div>            
+            </div>
             <div class="form-row">
-               <div class="form-group col-md-4">
-                   <label for="">Hora de Inicio del Mantenimiento:</label>
-                   <input type="time" name="hora_inicio" class="form-control" value="{{ $equipo_a_e->hora_inicio }}">
-              </div>
-              <div class="form-group col-md-4">
-                   <label for="">Hora de Finalizacion del Mantenimiento:</label>
-                   <input type="time" name="hora_fin" class="form-control" value="{{ $equipo_a_e->hora_fin }}">
-              </div>
-              <div class="form-group col-md-4">
-               <label for="">Conexion con Usuario(Cliente) encargado:</label>
-               <input type="number" name="user_id" class="form-control" value="{{ $equipo_a_e->user_id }}">
-          </div>
-             </div>
-          {{--<div class="form-row">
-               <div class="form-group col-md-12">
-                    <label for="">Imagen:</label>
-                    <div class="input-group control-group increment" >
-                         <input type="file" name="imagen" class="form-control">
-                              <div class="input-group-btn"> 
-                                   <button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Agregar</button>
-                              </div>
-                    </div>
-                    
-               </div>
-          </div>--}}
+                <div class="col-md-12 bg-success text-white">
+                    <h3>INFORMACION ADICIONAL</h3>
+                </div>
+            </div>        
+            <div class="form-row">
+                <div class="col-md-3 bg-white text-dark text-lg-right">
+                    <h5>IMAGENES</h5>
+                </div>
+                <div class="col-md-9">
+                    <a href="{{ route('inicio_imagenes_a') }}" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> Imagenes</a>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="col-md-3 bbg-white text-dark text-lg-right">
+                    <h5>CHECKLIST</h5>
+                </div>
+                <div class="form-row col-md-9">
+                        <a href="" type="button" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> Operatividad</a>
+                        <a href="" type="button" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> MTTO</a>
+                        <a href="" type="button" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> Pruebas Electromecanicas</a>
+                  </div>
+                </div>
+            <p></p>    
                
           <div class="form-row">
                <div class="form-group">
