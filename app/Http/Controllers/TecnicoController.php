@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManagerStatic as Image;
 Use App;
 
 class TecnicoController extends Controller
@@ -17,12 +19,14 @@ class TecnicoController extends Controller
     }
 
     public function producto_detalle_t($id){
+        $users_list = DB::table('users')->select('id','name')->where('role_id','=',4)->get();
         $equipo_t = App\Equipo::findOrFail($id);
-        return view('users.tecnico.productos_detalle', compact('equipo_t'));
+        return view('users.tecnico.productos_detalle', compact('equipo_t','users_list'));
     }
 
     public function producto_agregar_t(){
-        return view('users.tecnico.productos_agregar');
+        $users_list = DB::table('users')->select('id','name')->where('role_id','=',4)->get();
+        return view('users.tecnico.productos_agregar', compact('users_list'));
     }
 
     public function producto_crear_t(Request $request){
@@ -30,40 +34,55 @@ class TecnicoController extends Controller
             'codigo' => 'required',
         ]);
 
-        $nuevo_equipo_t = new App\Equipo($request->all());
+        $nuevo_equipo_t = new App\Equipo;   
+
+        $nuevo_equipo_t->codigo = $request->codigo;        
+        $nuevo_equipo_t->nombre = $request->nombre;
+        $nuevo_equipo_t->empresa = $request->empresa;
+        $nuevo_equipo_t->ubicacion = $request->ubicacion;
+        $nuevo_equipo_t->celular = $request->celular;
+        $nuevo_equipo_t->fecha = $request->fecha;
+        $nuevo_equipo_t->periocidad = $request->periocidad;
+        $nuevo_equipo_t->marca_motor = $request->marca_motor;
+        $nuevo_equipo_t->modelo_motor = $request->modelo_motor;
+        $nuevo_equipo_t->nserie_motor = $request->nserie_motor;
+        $nuevo_equipo_t->potencia_motor = $request->potencia_motor;
+        $nuevo_equipo_t->marca_generador = $request->marca_generador;
+        $nuevo_equipo_t->modelo_generador = $request->modelo_generador;
+        $nuevo_equipo_t->nserie_generador = $request->nserie_generador;
+        $nuevo_equipo_t->potencia_generador = $request->potencia_generador;
+        $nuevo_equipo_t->fecha = $request->fecha;
+        $nuevo_equipo_t->hora_inicio = $request->hora_inicio;
+        $nuevo_equipo_t->hora_fin = $request->hora_fin;
+        $nuevo_equipo_t->user_id = $request->user_id;
+        $nuevo_equipo_t->save();
+
+
+        $nueva_imagen_a = new App\Image;        
+        $nombre_image = $request->file('image_id')->getClientOriginalName();
+        Image::make($request->file('image_id'))
+            ->save('img/image/'.$nombre_image);
+
+        $nueva_imagen_a->url = $nombre_image;
+        $nueva_imagen_a->equipo_id = $nuevo_equipo_t->id;
+        
         $nuevo_equipo_t->save();
 
         return redirect()->route('index_tecnico');
     }
 
     public function producto_editar_t($id){
+        $users_list = DB::table('users')->select('id','name')->where('role_id','=',4)->get();
         $equipo_t_e = App\Equipo::findOrFail($id);
 
-        return view('users.tecnico.productos_editar', compact('equipo_t_e'));
+        return view('users.tecnico.productos_editar', compact('equipo_t_e', 'users_list'));
 
     }
 
     public function producto_actualizar_t(Request $request, $id){
         $equipo_t_actualizar = App\Equipo::findOrFail($id);
 
-        $equipo_t_actualizar->codigo = $request->codigo;        
-        $equipo_t_actualizar->nombre = $request->nombre;
-        $equipo_t_actualizar->empresa = $request->empresa;
-        $equipo_t_actualizar->ubicacion = $request->ubicacion;
-        $equipo_t_actualizar->celular = $request->celular;
-        $equipo_t_actualizar->periocidad = $request->periocidad;
-        $equipo_t_actualizar->tipo_producto = $request->tipo_producto;
-        $equipo_t_actualizar->marca_motor = $request->marca_motor;
-        $equipo_t_actualizar->modelo_motor = $request->modelo_motor;
-        $equipo_t_actualizar->nserie_motor = $request->nserie_motor;
-        $equipo_t_actualizar->potencia_motor = $request->potencia_motor;
-        $equipo_t_actualizar->marca_generador = $request->marca_generador;
-        $equipo_t_actualizar->modelo_generador = $request->modelo_generador;
-        $equipo_t_actualizar->nserie_generador = $request->nserie_generador;
-        $equipo_t_actualizar->potencia_generador = $request->potencia_generador;
-        $equipo_t_actualizar->hora_inicio = $request->hora_inicio;
-        $equipo_t_actualizar->hora_fin = $request->hora_fin;
-        $equipo_t_actualizar->user_id = $request->user_id;
+        $equipo_t_actualizar->fill($request->all());
 
 
         $equipo_t_actualizar->save();

@@ -20,12 +20,12 @@
           @enderror
                     
           <div class="form-row bg-warning">
-            <div class="form-group col-md-2 text-lg-center">
-            <label>Usuario ID</label>                
+            <div class="form-group col-md-3 text-lg-center">
+            <label>Usuario</label>                
             <select name="user_id" id="inputState" class="form-control">
-                <option selected disabled value="">Escoga...</option>   
+                <option selected disabled value="">{{ $equipo_a_e->user_id  }}</option>   
                 @foreach ($users_list as $item)               
-                    <option value="{{ $item->id }}">{{ $item->id }}</option>
+                    <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->name }}</option>
                 @endforeach                    
             </select>                
             </div>
@@ -33,7 +33,7 @@
                 <label>Codigo</label>
                 <input type="text" name="codigo" class="form-control" value="{{ $equipo_a_e->codigo }}">
             </div>               
-            <div class="form-group col-md-8 text-lg-center">
+            <div class="form-group col-md-7 text-lg-center">
                 <label>Nombre</label>
                 <input type="text" name="nombre" class="form-control" value="{{ $equipo_a_e->nombre }}">
             </div>
@@ -46,7 +46,7 @@
                 <div class="form-group col-md-2 text-lg-center">
                     <label>Periocidad</label>
                     <select name="periocidad" id="inputState" class="form-control">
-                        <option selected disabled value="">Escoga...</option>
+                        <option selected disabled value="">{{ $equipo_a_e->periocidad  }}</option>
                         <option text="Anual">Anual</option>
                         <option text="Bimestral">Bimestral</option>
                         <option text="Trimestral">Trimestral</option>
@@ -69,7 +69,7 @@
                 <h3>DATOS DE EQUIPO</h3>
             </div>
         </div>
-        <div class="form-row bg">
+        <div class="form-row">
             <div class="col-md-6 bg-dark text-white">
                 <h5 class="text-lg-center">Motor</h5>
             </div><div class="col-md-6 bg-dark text-white">
@@ -144,19 +144,7 @@
                     <a href="{{ route('inicio_imagenes_a') }}" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> Imagenes</a>
                 </div>
             </div>
-            
-            <div class="form-row">
-                <div class="col-md-3 bbg-white text-dark text-lg-right">
-                    <h5>CHECKLIST</h5>
-                </div>
-                <div class="form-row col-md-9">
-                        <a href="" type="button" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> Operatividad</a>
-                        <a href="" type="button" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> MTTO</a>
-                        <a href="" type="button" class="btn btn-outline-primary"><i class="fa fa-plus-circle"></i> Pruebas Electromecanicas</a>
-                  </div>
-                </div>
-            <p></p>    
-               
+                           
           <div class="form-row">
                <div class="form-group">
                     <a class="btn btn-outline-primary" href="{{ route('producto_a') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver </a>

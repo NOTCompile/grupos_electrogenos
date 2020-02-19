@@ -35,7 +35,7 @@ class AdministradorController extends Controller
             'codigo' => 'required',
         ]);   
 
-        $nuevo_equipo_a = new App\Equipo;        
+        $nuevo_equipo_a = new App\Equipo;   
     
         $nuevo_equipo_a->codigo = $request->codigo;        
         $nuevo_equipo_a->nombre = $request->nombre;
@@ -52,6 +52,7 @@ class AdministradorController extends Controller
         $nuevo_equipo_a->modelo_generador = $request->modelo_generador;
         $nuevo_equipo_a->nserie_generador = $request->nserie_generador;
         $nuevo_equipo_a->potencia_generador = $request->potencia_generador;
+        $nuevo_equipo_a->fecha = $request->fecha;
         $nuevo_equipo_a->hora_inicio = $request->hora_inicio;
         $nuevo_equipo_a->hora_fin = $request->hora_fin;
         $nuevo_equipo_a->user_id = $request->user_id;
@@ -73,7 +74,7 @@ class AdministradorController extends Controller
 
     public function producto_editar_a($id){
         $equipo_a_e = App\Equipo::findOrFail($id);
-        $users_list = DB::table('users')->select('id')->where('role_id','=',4)->get();
+        $users_list = DB::table('users')->select('id','name')->where('role_id','=',4)->get();
 
         return view('users.administrador.productos_editar', compact('equipo_a_e','users_list'));
 
@@ -82,25 +83,8 @@ class AdministradorController extends Controller
     public function producto_actualizar_a(Request $request, $id){
         $equipo_a_actualizar = App\Equipo::findOrFail($id);
 
-        $equipo_a_actualizar->codigo = $request->codigo;        
-        $equipo_a_actualizar->nombre = $request->nombre;
-        $equipo_a_actualizar->empresa = $request->empresa;
-        $equipo_a_actualizar->ubicacion = $request->ubicacion;
-        $equipo_a_actualizar->celular = $request->celular;
-        $equipo_a_actualizar->periocidad = $request->periocidad;
-        $equipo_a_actualizar->marca_motor = $request->marca_motor;
-        $equipo_a_actualizar->modelo_motor = $request->modelo_motor;
-        $equipo_a_actualizar->nserie_motor = $request->nserie_motor;
-        $equipo_a_actualizar->potencia_motor = $request->potencia_motor;
-        $equipo_a_actualizar->marca_generador = $request->marca_generador;
-        $equipo_a_actualizar->modelo_generador = $request->modelo_generador;
-        $equipo_a_actualizar->nserie_generador = $request->nserie_generador;
-        $equipo_a_actualizar->potencia_generador = $request->potencia_generador;
-        $equipo_a_actualizar->hora_inicio = $request->hora_inicio;
-        $equipo_a_actualizar->hora_fin = $request->hora_fin;
-        $equipo_a_actualizar->user_id = $request->user_id;
-
-
+        $equipo_a_actualizar->fill($request->all());
+    
         $equipo_a_actualizar->save();
 
         return redirect()->route('index_administrador');
@@ -118,13 +102,11 @@ class AdministradorController extends Controller
 
     public function usuario_a(){
         $usuarios_a = App\User::paginate(10);
-
         return view('users.administrador.usuarios', compact('usuarios_a'));
     }
 
     public function usuario_editar_a($id){
         $usuario_a_e = App\User::findOrFail($id);
-
         return view('users.administrador.usuarios_editar', compact('usuario_a_e'));
     }
 

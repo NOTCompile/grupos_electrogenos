@@ -22,7 +22,7 @@
                        </div>
                   @enderror
                             
-                    <div class="form-row bg-warning">
+                    <div class="form-row">
                          <div class="form-group col-md-10 text-lg-center">
                               <label>Nombre</label>
                               <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
@@ -32,16 +32,16 @@
                         <select name="equipo_id" id="inputState" class="form-control">
                             <option selected disabled value="">Escoga...</option>   
                             @foreach ($users_list as $item)               
-                                <option value="{{ $item->id }}">{{ $item->id }}</option>
-                            @endforeach                    
+                                <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                            @endforeach  
                         </select>                
-                        </div>
-                                      
+                        </div>                                      
                         <div class="form-group col-md-8 text-lg-center">
                             <label>Imagen</label>
-                            <input type="file" name="url" class="form-control" value="{{ old('nombre') }}">
+                            <input type="file" name="url" class="form-control">
                         </div>
                     </div>
+                    <p></p>
                     <div class="form-row">
                          <div class="form-group">
                                  <a class="btn btn-outline-primary" href="{{ route('inicio_imagenes_t') }}"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;Volver </a>

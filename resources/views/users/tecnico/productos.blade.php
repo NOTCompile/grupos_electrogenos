@@ -32,7 +32,7 @@
                     <td class="border border-dark text-center">{{$item->user_id}}</td>
                     <td class="border text-center border-dark">
                     <div> 
-                         <a href="{{-- route('producto_editar_t', $item) --}}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a> 
+                         <a href="{{ route('producto_editar_t', $item) }}" class="btn btn-outline-warning"><i class="fa fa-pencil"></i></a> 
                     </div>
                     </td>
                </tr>

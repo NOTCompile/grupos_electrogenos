@@ -1,10 +1,10 @@
-@extends('layouts.app_administrador')
+@extends('layouts.app_tecnico')
 
 @section('content')
 
 <div class="container">
      <div class="row justify-content-center">
-         @include('menu_administrador')
+         @include('menu_tecnico')
           <div class="col-md-9 border shadow p-4">
                <a href="{{ route('imagenes_agregar_t') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i> Nueva Imagen</a>
                <p></p> 

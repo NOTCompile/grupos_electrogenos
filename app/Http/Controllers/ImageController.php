@@ -11,11 +11,12 @@ class ImageController extends Controller
 {
     public function inicio_imagenes_a(){
         $image_a = App\Image::paginate(10);
+        $users_list = DB::table('equipos')->select('id', 'nombre')->get();
         return view('users.administrador.imagen.imagen_lista', compact('image_a'));
     }
 
     public function imagenes_agregar_a(){
-        $users_list = DB::table('equipos')->select('id')->get();
+        $users_list = DB::table('equipos')->select('id','nombre')->get();
         return view('users.administrador.imagen.imagen_agregar', compact('users_list'));
     }
     
@@ -47,12 +48,12 @@ class ImageController extends Controller
 
     public function inicio_imagenes_t(){
         $image_t = App\Image::paginate(10);
-        return view('users.administrador.imagen.imagen_lista', compact('image_t'));
+        return view('users.tecnico.imagen.imagen_lista', compact('image_t'));
     }
 
     public function imagenes_agregar_t(){
-        $users_list = DB::table('equipos')->select('id')->get();
-        return view('users.administrador.imagen.imagen_agregar', compact('users_list'));
+        $users_list = DB::table('equipos')->select('id','nombre')->get();
+        return view('users.tecnico.imagen.imagen_agregar', compact('users_list'));
     }
     
     public function imagenes_crear_t(Request $request){

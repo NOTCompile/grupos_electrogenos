@@ -23,21 +23,21 @@
                   @enderror
                             
                     <div class="form-row bg-warning">
-                         <div class="form-group col-md-10 text-lg-center">
+                         <div class="form-group col-md-9 text-lg-center">
                               <label>Nombre</label>
                               <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
                          </div>
-                        <div class="form-group col-md-2 text-lg-center">
-                        <label>Equipo ID</label>                
+                        <div class="form-group col-md-3 text-lg-center">
+                        <label>Equipo</label>                
                         <select name="equipo_id" id="inputState" class="form-control">
                             <option selected disabled value="">Escoga...</option>   
                             @foreach ($users_list as $item)               
-                                <option value="{{ $item->id }}">{{ $item->id }}</option>
+                                <option value="{{ $item->id }}">{{ $item->nombre }}</option>
                             @endforeach                    
                         </select>                
                         </div>
                                       
-                        <div class="form-group col-md-8 text-lg-center">
+                        <div class="form-group col-md-12 text-lg-center">
                             <label>Imagen</label>
                             <input type="file" name="url" class="form-control" value="{{ old('nombre') }}">
                         </div>

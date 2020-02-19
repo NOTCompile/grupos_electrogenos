@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         @include('menu_administrador')
         <div class="col-md-9 border shadow p-4">            
-        <div class="form-row">
+        <div class="form-row border shadow-lg">
             <div class="col-md-12 text-warning">
                 <h1 style="text-decoration:underline; text-align:center;text-shadow: 3px 3px #0038FF;">NUEVO GRUPO ELECTROGENO</h1>
             </div>
@@ -32,7 +32,7 @@
                 <select name="user_id" id="inputState" class="form-control">
                     <option selected disabled value="">Escoga...</option>   
                     @foreach ($users_list as $item)               
-                        <option value="{{ $item->id }}">{{ $item->id }}</option>
+                        <option value="{{ $item->id }}">{{ $item->name}}</option>
                     @endforeach                    
                 </select>                
                 </div>
